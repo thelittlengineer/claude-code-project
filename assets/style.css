@@ -270,16 +270,16 @@ img, svg { max-width: 100%; }
 /* Booking */
 .booking { padding: 90px 0; }
 
-.booking-placeholder {
+.booking-widget {
   margin-top: 40px;
-  border: 2px dashed var(--border);
+  border: 1px solid var(--border);
   border-radius: 12px;
   min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--grey);
   background: var(--black-card);
+  padding: 24px;
 }
 
 /* Contact */
