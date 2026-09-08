@@ -351,7 +351,7 @@
       checks++;
       var loaded = jfSlot.childNodes.length > 0 || jfSlot.offsetHeight > 40;
       if (loaded) { bookFallback.hidden = true; clearInterval(watchWidget); }
-      else if (checks >= 10) { bookFallback.hidden = false; clearInterval(watchWidget); }
+      else if (checks >= 8) { bookFallback.hidden = false; clearInterval(watchWidget); }
     }, 600);
   }
 
