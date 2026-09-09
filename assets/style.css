@@ -489,14 +489,15 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 /* get in touch */
 .reach{margin-top:38px;padding:clamp(26px,3.4vw,40px);border-radius:18px;
   background:var(--panel);border:1px solid rgba(166,176,194,.14)}
-.tel-big{display:inline-block;font-family:var(--display);font-weight:800;
+.tel-big{display:inline-flex;align-items:center;min-height:48px;font-family:var(--display);font-weight:800;
   font-size:clamp(1.8rem,4.4vw,3rem);line-height:1.06;letter-spacing:-.03em;
   color:var(--text-primary);text-decoration:none}
 .tel-big:hover{color:var(--accent)}
 .tel-sub{margin-top:8px;color:var(--text-secondary);font-size:.95rem}
-.email{display:inline-block;margin-top:18px;color:var(--accent);font-size:1.06rem;
-  text-decoration:none;border-bottom:1px solid var(--hairline)}
-.email:hover{color:var(--accent-hi);border-bottom-color:var(--accent)}
+.email{display:inline-flex;align-items:center;min-height:44px;margin-top:10px;
+  color:var(--accent);font-size:1.06rem;
+  text-decoration:underline;text-decoration-color:var(--hairline);text-underline-offset:5px}
+.email:hover{color:var(--accent-hi);text-decoration-color:var(--accent)}
 .reach-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 
 /* footer */
@@ -504,9 +505,18 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .foot-line .mark{width:20px;height:20px}
 .foot-end{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,34px);
   flex-wrap:wrap;color:var(--text-secondary);font-size:.88rem}
-.foot-end a{color:var(--text-secondary);text-decoration:none}
+.foot-end a{display:inline-flex;align-items:center;min-height:44px;color:var(--text-secondary);text-decoration:none}
 .foot-end a:hover{color:var(--accent)}
 
 @media (prefers-reduced-motion:reduce){
   .stepitem,.plan{opacity:1 !important;transform:none !important}
+}
+
+
+/* phones: labels and hints were too small to read comfortably */
+@media (max-width:760px){
+  .kicker{font-size:.82rem;letter-spacing:.16em}
+  .place .hint{font-size:.82rem;letter-spacing:.14em}
+  .tel-sub{font-size:1rem}
+  .plan-note,.foot-end,.foot-note{font-size:.92rem}
 }
