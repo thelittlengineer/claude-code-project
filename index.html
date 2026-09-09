@@ -124,6 +124,12 @@
   </div>
 </section>
 
+<div class="thread" id="thread" aria-hidden="true">
+  <span class="thread-track"></span>
+  <span class="thread-fill"></span>
+  <span class="thread-star"><svg viewBox="0 0 100 100"><path fill-rule="evenodd" d="M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z"/></svg></span>
+</div>
+
 <div class="divider" aria-hidden="true"><svg viewBox="0 0 1200 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="1200" y2="1"></line></svg></div>
 
 <section id="promise" class="sec promise">
@@ -131,27 +137,27 @@
     <p class="kicker">WHAT GOES WRONG</p>
     <h2 class="h2">Five things people say about web designers.<br>Five answers.</h2>
     <ol class="pledges">
-      <li class="pledge">
+      <li class="pledge" data-track>
         <span class="pn">01</span>
         <p class="said">"They took the deposit and stopped answering."</p>
         <p class="mine">My number sits at the top of this page. I answer it.</p>
       </li>
-      <li class="pledge">
+      <li class="pledge" data-track>
         <span class="pn">02</span>
         <p class="said">"Four to six weeks turned into five months."</p>
         <p class="mine">Two weeks. Written down before I start.</p>
       </li>
-      <li class="pledge">
+      <li class="pledge" data-track>
         <span class="pn">03</span>
         <p class="said">"I sent a full layout and got back a preset home page."</p>
         <p class="mine">Nothing here is a template. Yours will not be either.</p>
       </li>
-      <li class="pledge">
+      <li class="pledge" data-track>
         <span class="pn">04</span>
         <p class="said">"The price was not the price."</p>
         <p class="mine">300 dollars. One number, agreed up front, nothing added later.</p>
       </li>
-      <li class="pledge">
+      <li class="pledge" data-track>
         <span class="pn">05</span>
         <p class="said">"Changing one line of text means paying someone."</p>
         <p class="mine">I teach you to edit your own words. It takes one short session.</p>
@@ -196,7 +202,7 @@
 
 <div class="divider" aria-hidden="true"><svg viewBox="0 0 1200 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="1200" y2="1"></line></svg></div>
 
-<section id="build" class="sec build">
+<section id="build" class="sec build" data-scene>
   <div class="wrap">
     <p class="kicker">WHAT I BUILD</p>
     <h2 class="h2">One website, made to fit one business.</h2>
@@ -224,19 +230,19 @@
     <p class="kicker">HOW IT WORKS</p>
     <h2 class="h2">Fourteen days, start to live.</h2>
     <div class="steps">
-      <article class="step">
+      <article class="step" data-track>
         <p class="day">Day 1</p>
         <span class="sn">1</span>
         <h3>Tell me about your business</h3>
         <p>A free call, fifteen minutes. What you do, who you sell to, and what the site has to achieve for you.</p>
       </article>
-      <article class="step">
+      <article class="step" data-track>
         <p class="day">Day 2 to 12</p>
         <span class="sn">2</span>
         <h3>I design and build it</h3>
         <p>You see it before anyone else does. Changes are part of the price, not billed by the round.</p>
       </article>
-      <article class="step">
+      <article class="step" data-track>
         <p class="day">Day 14</p>
         <span class="sn">3</span>
         <h3>You launch</h3>
@@ -299,10 +305,7 @@
     <p class="lede">Fifteen minutes. Tell me what your business is and I will tell you exactly what your website should be. No charge, and no pressure to book anything after it.</p>
     <div class="widget">
       <div id="JFWebsiteWidget-01a0630f7ad070008b1a46e6b41426f540f2"></div>
-      <div class="widget-fallback" id="bookfallback" hidden>
-        <p>The booking calendar is not loading right now.</p>
-        <a class="btn" href="tel:549910693">Call 54 991 0693 instead</a>
-      </div>
+      <div class="widget-skeleton" id="bookskeleton" aria-hidden="true"><span></span><span></span><span></span></div>
       <script src="https://www.jotform.com/website-widgets/embed/01a0630f7ad070008b1a46e6b41426f540f2"></script>
     </div>
     <p class="orcall">Rather just talk? Call <a href="tel:549910693">54 991 0693</a>.</p>
