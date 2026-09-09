@@ -425,7 +425,7 @@
   }
 
   /* ---------------- the booking area holds its space for the live calendar ---------------- */
-  var jfSlot = doc.getElementById('JFWebsiteWidget-01a0630f7ad070008b1a46e6b41426f540f2');
+  var jfSlot = doc.querySelector('[id^="JFWebsiteWidget-"]');
   var skeleton = doc.getElementById('bookskeleton');
   if (jfSlot && skeleton) {
     var checks = 0;
