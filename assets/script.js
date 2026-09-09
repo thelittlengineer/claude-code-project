@@ -169,7 +169,7 @@
   var thread = doc.getElementById('thread');
   var threadTop = 0, threadLen = 0, lastT = -1;
   var nodes = [];
-  var NODE_SECTIONS = ['promise', 'place', 'build', 'how', 'price', 'faq', 'book'];
+  var NODE_SECTIONS = ['place', 'how', 'price', 'book', 'human', 'contact'];
 
   var tracks = [].slice.call(doc.querySelectorAll('[data-track]')).map(function (el) {
     return { el: el, top: 0, p: -1 };
