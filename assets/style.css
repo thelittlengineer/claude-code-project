@@ -261,7 +261,11 @@ main{position:relative}
 .book .lede{margin:0 auto 40px}
 .widget{width:100%;max-width:760px;padding:clamp(18px,3vw,32px);border-radius:20px;
   background:var(--panel);border:1px solid var(--hairline);
-  box-shadow:0 30px 90px rgba(0,0,0,.4);min-height:96px}
+  box-shadow:0 30px 90px rgba(0,0,0,.4);min-height:96px;
+  overflow:visible}
+/* the embed sizes itself: never cap it, never clip it, never let it overflow sideways */
+.widget iframe{display:block;width:100%!important;max-width:100%!important;border:0;
+  min-height:520px;height:auto}
 
 /* --- footer --- */
 .foot{border-top:1px solid rgba(166,176,194,.14);padding:52px 0 44px;margin-top:20px}
@@ -365,9 +369,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   opacity:1 !important;transform:none !important}
 
 /* the booking fallback: shown only when the third party embed never arrives */
-.widget-fallback{display:flex;flex-direction:column;align-items:center;gap:20px;padding:12px 0}
-.widget-fallback[hidden]{display:none !important}
-.widget-fallback p{color:var(--text-secondary);font-size:1rem}
 
 
 /* ==========================================================================
