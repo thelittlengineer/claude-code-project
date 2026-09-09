@@ -443,6 +443,160 @@
     }, 600);
   }
 
+  /* ---------------- the contact form ----------------
+     Paste your Formspree endpoint below and messages arrive at your inbox.
+     Leave it empty and the form still works: it opens the visitor's email
+     app with everything filled in, so nobody ever hits a dead end.        */
+  var FORM_ENDPOINT = '';                 // e.g. 'https://formspree.io/f/abcdwxyz'
+  var FORM_EMAIL = 'rasem@mawqi.site';
+
+  var cform = doc.getElementById('cform');
+  if (cform) {
+    var fdone = doc.getElementById('fdone');
+    var fdonesub = doc.getElementById('fdonesub');
+    var fnote = doc.getElementById('fnote');
+    var fsend = doc.getElementById('fsend');
+
+    var digits = function (v) { return (v || '').replace(/[^0-9]/g, ''); };
+    var rules = {
+      name: function (v) {
+        if (!v.trim()) return 'Tell me your name.';
+        if (v.trim().length < 2) return 'That looks too short to be a name.';
+        return '';
+      },
+      phone: function (v) {
+        if (!v.trim()) return 'I need a number I can call you on.';
+        if (digits(v).length < 7) return 'That number looks too short. Check it for me.';
+        if (digits(v).length > 15) return 'That number looks too long. Check it for me.';
+        return '';
+      },
+      email: function (v) {
+        if (!v.trim()) return 'I need your email so I can write back.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())) return 'That email does not look right. Check it for me.';
+        return '';
+      }
+    };
+
+    var fields = ['name', 'phone', 'email'].map(function (k) {
+      return { key: k, el: doc.getElementById('f-' + k), err: doc.getElementById('e-' + k), touched: false };
+    });
+    var work = doc.getElementById('f-work');
+
+    function showError(f, msg) {
+      if (f.err.textContent !== msg) f.err.textContent = msg;
+      var bad = !!msg;
+      if ((f.el.getAttribute('aria-invalid') === 'true') !== bad) {
+        f.el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+      }
+      f.el.setAttribute('aria-describedby', 'e-' + f.key);
+    }
+    function checkField(f, force) {
+      var msg = rules[f.key](f.el.value);
+      if (f.touched || force) showError(f, msg);
+      return msg;
+    }
+
+    var LABELS = { name: 'your name', phone: 'your number', email: 'your email' };
+
+    function setNote(text, bad) {
+      fnote.textContent = text;
+      fnote.classList.toggle('bad', !!bad);
+    }
+
+    // list what is still missing, in the order the fields appear
+    function missingNote() {
+      var missing = fields.filter(function (f) { return rules[f.key](f.el.value); })
+                          .map(function (f) { return LABELS[f.key]; });
+      if (!missing.length) return null;
+      var list = missing.length === 1 ? missing[0]
+        : missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1];
+      return 'I still need ' + list + '.';
+    }
+
+    // once everything is filled in, drop the warning rather than leaving it red
+    function refreshNote() {
+      var msg = missingNote();
+      if (msg) setNote(msg, true);
+      else setNote('I read every message myself.', false);
+    }
+
+    fields.forEach(function (f) {
+      f.el.addEventListener('blur', function () { f.touched = true; checkField(f); if (fnote.classList.contains('bad')) refreshNote(); });
+      f.el.addEventListener('input', function () {
+        if (f.touched) checkField(f);
+        if (fnote.classList.contains('bad')) refreshNote();
+      });
+    });
+
+    function mailtoFallback(data) {
+      var body = 'Name: ' + data.name + '\nPhone: ' + data.phone + '\nEmail: ' + data.email +
+                 '\n\nWhat they do:\n' + (data.work || '(not given)');
+      location.href = 'mailto:' + FORM_EMAIL +
+        '?subject=' + encodeURIComponent('Website enquiry from ' + data.name) +
+        '&body=' + encodeURIComponent(body);
+    }
+
+    function finish(msg) {
+      cform.hidden = true;
+      fdone.hidden = false;
+      if (msg) fdonesub.textContent = msg;
+      fdone.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      measure();
+      schedule();
+    }
+
+    cform.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstBad = null;
+      fields.forEach(function (f) {
+        f.touched = true;
+        if (checkField(f, true) && !firstBad) firstBad = f;
+      });
+      if (firstBad) {
+        refreshNote();
+        firstBad.el.focus();
+        return;
+      }
+      setNote('Sending...', false);
+      fsend.disabled = true;
+
+      var data = {
+        name: fields[0].el.value.trim(),
+        phone: fields[1].el.value.trim(),
+        email: fields[2].el.value.trim(),
+        work: work ? work.value.trim() : ''
+      };
+
+      if (!FORM_ENDPOINT) { fsend.disabled = false; setNote('I read every message myself.', false); mailtoFallback(data); return; }
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (res) {
+        if (!res.ok) throw new Error('bad status ' + res.status);
+        finish('I will get back to you on ' + data.phone + '.');
+      }).catch(function () {
+        fsend.disabled = false;
+        setNote('That did not send. Opening your email app instead.', true);
+        mailtoFallback(data);
+      });
+    });
+
+    var fagain = doc.getElementById('fagain');
+    if (fagain) fagain.addEventListener('click', function () {
+      cform.reset();
+      fields.forEach(function (f) { f.touched = false; showError(f, ''); });
+      setNote('I read every message myself.', false);
+      fsend.disabled = false;
+      fdone.hidden = true;
+      cform.hidden = false;
+      cform.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      measure();
+      schedule();
+    });
+  }
+
   /* ---------------- reduced motion, honoured live in both directions ---------------- */
   function pinToFinalStates() {
     body.classList.add('pinned');
