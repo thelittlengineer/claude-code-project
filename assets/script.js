@@ -350,16 +350,34 @@
 
   /* ---------------- section entrances ---------------- */
   var reveals = [].slice.call(doc.querySelectorAll('.sec, .divider'));
+  var ENTER = 0.3;  /* the section must be 30% on screen before anything moves */
+
+  /* Steps fine enough that a callback always lands while a section is arriving.
+     With only [0, 0.3] a section taller than three screens can never cross 0.3,
+     so the observer goes quiet after the first pixel and the check below never
+     gets to run. Landscape phones hit this on the pricing section. */
+  var STEPS = [];
+  for (var t = 0; t <= 0.6001; t += 0.02) STEPS.push(Math.round(t * 100) / 100);
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
+
+        /* A section taller than about three screens can never reach a ratio of
+           0.3, so it would sit invisible forever. Read the same 30% against the
+           viewport in that case: same feel, no dead section. */
+        var vh = innerHeight || doc.documentElement.clientHeight;
+        var deep = e.intersectionRatio >= ENTER ||
+                   e.intersectionRect.height >= vh * ENTER;
+        if (!deep) return;
+
         var el = e.target;
         el.classList.add('in');
-        io.unobserve(el);
+        io.unobserve(el);                      /* first pass only, never again */
         setTimeout(function () { el.classList.add('done'); }, 1900);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: STEPS });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('in', 'done'); });
