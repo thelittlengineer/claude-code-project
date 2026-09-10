@@ -1,151 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mawqi — We Build Your Website</title>
-<meta name="description" content="Mawqi builds custom websites for any business — fast, modern, and made to fit whatever your website needs to be.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mawqi | Websites for people who work</title>
+<meta name="description" content="Tell me what you do and I build your whole website. First year of your domain is 1 riyal, anywhere in the world. Book a free call.">
+<meta name="theme-color" content="#0A0E17">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0E17'/%3E%3Cpath fill='%23F2A93B' fill-rule='evenodd' d='M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mawqi | Websites for people who work">
+<meta property="og:description" content="Tell me what you do. Get your website. First year of your domain is 1 riyal.">
+<!-- DEPLOY STEP: patch og:url and og:image with the live absolute URL before zipping -->
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/assets/og.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Public+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="#top" class="logo">
-      <svg class="logo-star" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 1.5l2.95 6.62 7.2.66-5.45 4.83 1.62 7.09L12 17.06l-6.32 3.64 1.62-7.09-5.45-4.83 7.2-.66L12 1.5z"/>
-      </svg>
-      <span>Mawqi</span>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="env" aria-hidden="true">
+  <div class="env-glow"></div>
+  <div class="env-grain"></div>
+</div>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="Mawqi, back to top">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z"/></svg>
+      <span class="brand-word">Mawqi</span>
     </a>
-    <nav class="nav">
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#booking">Book a Call</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <nav id="menu" class="menu" aria-label="Main">
+      <a href="#price">Pricing</a>
+      <a href="#book">Book</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-sm" href="#book">Book a call</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
+<main id="main" tabindex="-1">
+<div id="top"></div>
 
-  <section class="hero">
-    <div class="container hero-inner">
-      <svg class="hero-star" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 1.5l2.95 6.62 7.2.66-5.45 4.83 1.62 7.09L12 17.06l-6.32 3.64 1.62-7.09-5.45-4.83 7.2-.66L12 1.5z"/>
-      </svg>
-      <p class="eyebrow">Websites, built for whatever you need</p>
-      <h1>Your business. Your website.<br>Made by <span class="accent">Mawqi</span>.</h1>
-      <p class="hero-sub">
-        Restaurant, shop, studio, service, portfolio — whatever your website needs to be,
-        we design and build it for you from the ground up.
-      </p>
-      <div class="hero-actions">
-        <a href="#booking" class="btn btn-primary">Book a Free Consultation</a>
-        <a href="#services" class="btn btn-ghost">See What We Offer</a>
-      </div>
-    </div>
-  </section>
+<section class="hero" id="hero">
+  <div class="stage" id="stage">
 
-  <section id="services" class="services">
-    <div class="container">
-      <h2 class="section-title">What We Build</h2>
-      <p class="section-sub">One website, tailored exactly to your business.</p>
-      <div class="service-grid">
-        <div class="service-card">
-          <div class="service-icon">01</div>
-          <h3>Business Websites</h3>
-          <p>A clean, professional site that tells people who you are and what you do.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">02</div>
-          <h3>Online Stores</h3>
-          <p>Sell your products online with a store built to convert visitors into customers.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">03</div>
-          <h3>Portfolios</h3>
-          <p>Show off your work with a site built around your images, projects, and story.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">04</div>
-          <h3>Landing Pages</h3>
-          <p>A focused, high-converting page for a launch, event, or campaign.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">05</div>
-          <h3>Redesigns</h3>
-          <p>Already have a site? We'll modernize it without losing what already works.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">06</div>
-          <h3>Ongoing Support</h3>
-          <p>Updates, fixes, and improvements after launch — we don't disappear.</p>
+    <div class="sky" id="sky" aria-hidden="true">
+      <div class="haze hz1"></div>
+      <div class="haze hz2"></div>
+      <div class="haze hz3"></div>
+      <div class="plane"></div>
+      <div class="motes" id="motes"></div>
+      <div class="starwrap">
+        <div class="spark"></div>
+        <div class="starcore">
+          <div class="halo"></div>
+          <svg class="rays" viewBox="0 0 100 100" aria-hidden="true">
+            <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="7">
+              <line x1="50" y1="8" x2="50" y2="1"></line>
+              <line x1="79.7" y1="20.3" x2="84.65" y2="15.35"></line>
+              <line x1="92" y1="50" x2="99" y2="50"></line>
+              <line x1="79.7" y1="79.7" x2="84.65" y2="84.65"></line>
+              <line x1="50" y1="92" x2="50" y2="99"></line>
+              <line x1="20.3" y1="79.7" x2="15.35" y2="84.65"></line>
+              <line x1="8" y1="50" x2="1" y2="50"></line>
+              <line x1="20.3" y1="20.3" x2="15.35" y2="15.35"></line>
+            </g>
+          </svg>
+          <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z"></path></svg>
         </div>
       </div>
     </div>
-  </section>
 
-  <section id="work" class="process">
-    <div class="container">
-      <h2 class="section-title">How It Works</h2>
-      <div class="process-grid">
-        <div class="process-step">
-          <span class="step-num">1</span>
-          <h3>Tell us about your business</h3>
-          <p>Book a call and walk us through what your website needs to do.</p>
-        </div>
-        <div class="process-step">
-          <span class="step-num">2</span>
-          <h3>We design & build</h3>
-          <p>We put together a site built around your brand, your content, your goals.</p>
-        </div>
-        <div class="process-step">
-          <span class="step-num">3</span>
-          <h3>You launch</h3>
-          <p>We hand off a finished website — live, fast, and ready for customers.</p>
-        </div>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <div class="bands" id="bands">
+
+      <div class="band" data-a="0" data-b="0.3" data-fx="drift">
+        <p class="kicker">Websites for people who work</p>
+        <h1 class="line xl" data-split="word">Tell me what you do.</h1>
+        <p class="line xl amb" data-split="word">Get your website.</p>
       </div>
-    </div>
-  </section>
 
-  <section id="booking" class="booking">
-    <div class="container">
-      <h2 class="section-title">Book a Free Consultation</h2>
-      <p class="section-sub">Pick a time that works for you and let's talk about your website.</p>
+      <div class="band" data-a="0.36" data-b="0.66" data-fx="focus">
+        <h2 class="line lg" data-split="none">A real place online.</h2>
+        <p class="sub">Every shop, every craft, every small business deserves one. Send me a sentence about your work and I build the whole site, design, words and all.</p>
+      </div>
 
-      <div id="booking-embed" class="booking-widget">
-        <div id="JFWebsiteWidget-01a0630f7ad070008b1a46e6b41426f540f2"></div>
-        <script src="https://www.jotform.com/website-widgets/embed/01a0630f7ad070008b1a46e6b41426f540f2"></script>
+      <div class="band settle" data-a="0.72" data-b="1" data-fx="rise">
+        <h2 class="line xl" data-split="word">Start with one sentence.</h2>
+        <p class="sub">Tell me what you do. I do the rest.</p>
+        <div class="row">
+          <a class="btn" href="#book">Book a call</a>
+        </div>
+        <p class="heronote">First year of your domain: <b>1 riyal</b>, anywhere in the world.</p>
       </div>
 
     </div>
-  </section>
 
-  <section id="contact" class="contact">
-    <div class="container contact-inner">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-sub">Have a question or need help? Reach out.</p>
-      <p class="contact-phone">54 991 0693</p>
+    <div class="static-copy">
+      <p class="kicker">Websites for people who work</p>
+      <h1 class="line xl">Tell me what you do.</h1>
+      <p class="line xl amb">Get your website.</p>
+      <p class="sub">Every shop, every craft, every small business deserves a real place online. Send me a sentence about your work and I build the whole site, design, words and all.</p>
+      <div class="row">
+        <a class="btn" href="#book">Book a call</a>
+      </div>
+      <p class="heronote">First year of your domain: <b>1 riyal</b>, anywhere in the world.</p>
     </div>
-  </section>
+
+    <div class="cue" id="cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+  </div>
+</section>
+
+<div class="thread" id="thread" aria-hidden="true">
+  <span class="thread-track"></span>
+  <span class="thread-fill"></span>
+  <span class="thread-star"><svg viewBox="0 0 100 100"><path fill-rule="evenodd" d="M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z"/></svg></span>
+</div>
+
+<div class="divider" aria-hidden="true"><svg viewBox="0 0 1200 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="1200" y2="1"></line></svg></div>
+
+<section id="place" class="sec place">
+  <div class="wrap place-in">
+    <div class="place-text">
+      <p class="kicker">Mawqi &middot; noun &middot; a place, a spot, a location</p>
+      <h2 class="h2">A page just sits there.<br>A place gets found.</h2>
+      <p class="lede">Anyone can put a page on the internet. A place is different. People can find it, send it to a friend, and trust you before they ever call.</p>
+      <p class="hint" id="planthint">Press and hold the star.</p>
+    </div>
+    <div class="plant">
+      <button class="plantbtn" id="plantbtn" aria-describedby="planthint">
+        <span class="visually-hidden">Plant the star to reveal what a place gives you</span>
+        <svg class="rays" viewBox="0 0 100 100" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="19">
+            <line x1="50" y1="20" x2="50" y2="1"></line>
+            <line x1="71.21" y1="28.79" x2="84.65" y2="15.35"></line>
+            <line x1="80" y1="50" x2="99" y2="50"></line>
+            <line x1="71.21" y1="71.21" x2="84.65" y2="84.65"></line>
+            <line x1="50" y1="80" x2="50" y2="99"></line>
+            <line x1="28.79" y1="71.21" x2="15.35" y2="84.65"></line>
+            <line x1="20" y1="50" x2="1" y2="50"></line>
+            <line x1="28.79" y1="28.79" x2="15.35" y2="15.35"></line>
+          </g>
+        </svg>
+        <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z"></path></svg>
+      </button>
+      <ul class="gains" id="gains">
+        <li>Somewhere to send every person who asks.</li>
+        <li>Open at two in the morning.</li>
+        <li>Proof you are a real business.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><svg viewBox="0 0 1200 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="1200" y2="1"></line></svg></div>
+
+<section id="how" class="sec how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2 class="h2">Three steps. That is all of it.</h2>
+    <ol class="stepcard">
+      <li class="stepitem" data-track>
+        <span class="sn">01</span>
+        <h3>Tell me what you do</h3>
+        <p>One message. A bakery, a garage, a law practice, a wedding photographer. I ask what I need and nothing more.</p>
+      </li>
+      <li class="stepitem" data-track>
+        <span class="sn">02</span>
+        <h3>I design and build it</h3>
+        <p>Pages, sections, colors, fonts and the words that actually sell, written for your customers, in your language.</p>
+      </li>
+      <li class="stepitem" data-track>
+        <span class="sn">03</span>
+        <h3>Keep it for 1 riyal</h3>
+        <p>If you love it, take the domain for 1 riyal the first year, anywhere you are. 75 riyal every year after, which is what it costs me.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="price" class="sec price" data-scene>
+  <div class="wrap">
+    <p class="kicker">Pricing</p>
+    <h2 class="h2">One <span class="amb">1 riyal</span> for your first year.</h2>
+    <p class="lede">You see the site before you pay a thing. The first year of your domain costs 1 riyal, wherever you are in the world.</p>
+    <div class="plans">
+
+      <article class="plan plan-lead" data-track>
+        <div class="plan-head">
+          <h3>Launch</h3>
+          <span class="badge">First year</span>
+        </div>
+        <p class="fig"><b>1</b> <span>riyal / year one</span></p>
+        <ul class="plan-list">
+          <li>Your domain, registered in your name</li>
+          <li>The full site, designed and built for you</li>
+          <li>Hosting, SSL and mobile layout included</li>
+          <li>Live in minutes, not months</li>
+        </ul>
+        <a class="btn" href="#book">Talk to me</a>
+      </article>
+
+      <article class="plan" data-track>
+        <div class="plan-head">
+          <h3>Every year after</h3>
+        </div>
+        <p class="fig"><b>75</b> <span>riyal / year</span></p>
+        <ul class="plan-list">
+          <li>Renewal at cost, same price for everyone</li>
+          <li>Domain, hosting and SSL kept alive</li>
+          <li>Edit your words and photos any time</li>
+          <li>Cancel whenever, the domain stays yours</li>
+        </ul>
+        <p class="plan-note">No setup fees. No commission on what you sell.</p>
+      </article>
+
+      <article class="plan" data-track>
+        <div class="plan-head">
+          <h3>Complete build</h3>
+          <span class="badge badge-quiet">One time</span>
+        </div>
+        <p class="fig"><b>800</b> <span>riyal / once</span></p>
+        <ul class="plan-list">
+          <li>A custom designed, multi page website</li>
+          <li>Written words that sell, in your language</li>
+          <li>Photo gallery, map, WhatsApp and calls</li>
+          <li>I build, launch and hand it over to you</li>
+        </ul>
+        <a class="btn btn-ghost" href="#book">Talk to me</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><svg viewBox="0 0 1200 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="1200" y2="1"></line></svg></div>
+
+<section id="book" class="sec book">
+  <div class="wrap book-in">
+    <p class="kicker">Book a call</p>
+    <h2 class="h2">Pick a time. <span class="amb">We talk.</span></h2>
+    <p class="lede">Choose a slot that suits you and tell me a little about your work. You will speak to me directly, never a bot, never a queue.</p>
+    <div class="widget">
+      <div id="JFWebsiteWidget-01a085bedbe8700080493ac6a8aad124981a"></div>
+      <div class="widget-skeleton" id="bookskeleton" aria-hidden="true"><span></span><span></span><span></span></div>
+      <script src="https://www.jotform.com/website-widgets/embed/01a085bedbe8700080493ac6a8aad124981a"></script>
+    </div>
+  </div>
+</section>
+
+<section id="human" class="sec human">
+  <div class="wrap">
+    <p class="humanbar">100 percent human designed. You will always work directly with me, never a bot.</p>
+  </div>
+</section>
+
+<section id="contact" class="sec contact">
+  <div class="wrap">
+    <p class="kicker">Get in touch</p>
+    <h2 class="h2">Tell me what you do.<br><span class="amb">I build your website.</span></h2>
+    <p class="lede">Tell me about your shop, your craft or your service, a sentence is enough. I design and build the whole site for you, and the first year of your domain costs 1 riyal.</p>
+    <div class="reach">
+      <a class="email email-big" href="mailto:rasem@mawqi.site">rasem@mawqi.site</a>
+      <p class="tel-sub">Write to me any time, or pick a slot and we talk.</p>
+      <div class="reach-actions">
+        <a class="btn" href="#book">Book a call</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <a href="#top" class="logo">
-      <svg class="logo-star" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 1.5l2.95 6.62 7.2.66-5.45 4.83 1.62 7.09L12 17.06l-6.32 3.64 1.62-7.09-5.45-4.83 7.2-.66L12 1.5z"/>
-      </svg>
-      <span>Mawqi</span>
-    </a>
-    <p class="footer-phone">54 991 0693</p>
-    <p class="footer-copy">&copy; <span id="year"></span> Mawqi. All rights reserved.</p>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="foot-line">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="M50 3 56.7 33.83 83.23 16.77 66.17 43.3 97 50 66.17 56.7 83.23 83.23 56.7 66.17 50 97 43.3 66.17 16.77 83.23 33.83 56.7 3 50 33.83 43.3 16.77 16.77 43.3 33.83Z M36.5 50a13.5 13.5 0 1 0 27 0 13.5 13.5 0 1 0-27 0Z"/></svg>
+      <span>Mawqi, a website for everyone who works.</span>
+    </p>
+    <p class="foot-call">Prefer to call? <a href="tel:+966549910693">+966 54 991 0693</a></p>
+    <div class="foot-end">
+      <span>&copy; <span id="yr">2026</span> Mawqi</span>
+    </div>
   </div>
 </footer>
 
