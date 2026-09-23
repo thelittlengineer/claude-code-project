@@ -386,16 +386,8 @@ async function renderTemplate(name, globals, overrides = {}) {
 
 /* ---------- Pages ---------- */
 
-const baseCart = makeCart([
-  { product: productsByHandle['signature-tee-black'], size: 'M', quantity: 1 },
-  { product: productsByHandle['signed-dad-cap'], size: 'One size', quantity: 1 },
-]);
-
-const cartAfterAdd = makeCart([
-  { product: productsByHandle['signature-tee-black'], size: 'M', quantity: 1 },
-  { product: productsByHandle['signed-dad-cap'], size: 'One size', quantity: 1 },
-  { product: productsByHandle['starfield-hoodie'], size: 'M', quantity: 1 },
-]);
+// The preview starts with an empty bag; preview-shim.js keeps the cart in the browser from there.
+const baseCart = makeCart([]);
 
 function globalsFor({ template, pageType, title, product = null, collection = null, cart = baseCart, extra = {} }) {
   return {
@@ -450,7 +442,8 @@ async function renderPage({ file, template, overrides, ...options }) {
   const globals = globalsFor({ template, ...options });
   const { html: content, layout } = await renderTemplate(template, globals, overrides);
   let page = await engine.parseAndRender(read(`layout/${layout}.liquid`), {}, { globals: { ...globals, content_for_layout: content } });
-  page = page.replace('</head>', `${FONT_LINK}\n<script src="preview-shim.js"></script>\n</head>`);
+  page = page.replace('</head>', `${FONT_LINK}\n<script src="preview-data.js"></script>
+<script src="preview-shim.js"></script>\n</head>`);
   fs.writeFileSync(path.join(OUT, file), page);
   return page;
 }
@@ -471,8 +464,8 @@ async function main() {
 
   const hoodie = productsByHandle['starfield-hoodie'];
 
-  // Responses the preview shim hands back to theme.js instead of Shopify's AJAX API.
-  const drawerAfterAdd = await renderSection('cart-drawer', {}, 'cart-drawer', globalsFor({ template: 'product', pageType: 'product', cart: cartAfterAdd }));
+  // Data for preview-shim.js, which stands in for Shopify's cart and recommendations endpoints.
+  const emptyDrawer = await renderSection('cart-drawer', {}, 'cart-drawer', globalsFor({ template: 'product', pageType: 'product' }));
   const recommendations = await renderSection(
     'product-recommendations',
     {},
@@ -490,33 +483,42 @@ async function main() {
       },
     })
   );
-  fs.writeFileSync(
-    path.join(OUT, 'preview-shim.js'),
-    `// Preview only: stands in for Shopify's cart and recommendations endpoints.
-window.__preview = ${JSON.stringify({ drawerAfterAdd, drawerCount: cartAfterAdd.item_count, recommendations })};
-(function () {
-  var realFetch = window.fetch.bind(window);
-  var json = function (body) { return Promise.resolve(new Response(JSON.stringify(body), { status: 200, headers: { 'Content-Type': 'application/json' } })); };
-  window.fetch = function (url, options) {
-    var href = String(url);
-    if (href.indexOf('/cart/add') !== -1 || href.indexOf('/cart/change') !== -1) {
-      return new Promise(function (resolve) { setTimeout(resolve, 350); }).then(function () {
-        return json({ sections: { 'cart-drawer': window.__preview.drawerAfterAdd } });
-      });
+  const variants = {};
+  for (const product of products) {
+    for (const variant of product.variants) {
+      variants[variant.id] = {
+        title: product.title,
+        variantTitle: product.has_only_default_variant ? '' : variant.title,
+        price: variant.price,
+        image: product.featured_media.src,
+        url: product.url,
+      };
     }
-    if (href.indexOf('/recommendations/products') !== -1) {
-      return Promise.resolve(new Response(window.__preview.recommendations, { status: 200 }));
-    }
-    return realFetch(url, options);
+  }
+  const icons = {};
+  for (const name of ['minus', 'plus', 'close', 'arrow', 'star']) {
+    icons[name] = (await engine.parseAndRender(`{% render 'icon', icon: '${name}' %}`)).trim();
+  }
+  const t = (key, params) => filters.t(key, ...(params ? Object.entries(params) : []));
+  const strings = {
+    title: t('cart.title'),
+    close: t('accessibility.close'),
+    remove: t('cart.remove'),
+    subtotal: t('cart.subtotal'),
+    taxes: t('cart.taxes_and_shipping_at_checkout'),
+    checkout: t('cart.checkout'),
+    viewCart: t('cart.view_cart'),
+    continueShopping: t('cart.continue_shopping'),
+    oneItem: t('cart.item_count', { count: 1 }),
+    manyItems: t('cart.item_count', { count: 2 }).replace('2', '{{ count }}'),
+    increase: 'Increase quantity for',
+    decrease: 'Decrease quantity for',
+    checkoutPreview: 'Preview only: checkout runs on your Shopify store',
+    formPreview: 'Preview only: forms send once the theme is on Shopify',
   };
-  document.addEventListener('submit', function (event) {
-    var form = event.target;
-    if (event.defaultPrevented || !form.action || form.getAttribute('action').charAt(0) !== '/') return;
-    event.preventDefault();
-  });
-})();
-`
-  );
+  const previewData = { variants, icons, strings, emptyDrawer, recommendations, cartUrl: 'cart.html', shopUrl: 'collection.html' };
+  fs.writeFileSync(path.join(OUT, 'preview-data.js'), `window.__preview = ${JSON.stringify(previewData)};\n`);
+  fs.copyFileSync(path.join(here, 'preview-shim.js'), path.join(OUT, 'preview-shim.js'));
 
   const indexOverrides = {
     story: { settings: { image: 'preview:flatlay' } },

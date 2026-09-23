@@ -70,7 +70,7 @@ npm run build         # -> build/index.html, product.html, collection.html, cart
 npm run screenshots   # -> screenshots/*.png (desktop + mobile, cart drawer, mobile menu); needs Playwright
 ```
 
-The renderer (`render.mjs`) covers only the parts of Shopify Liquid this theme uses: JSON templates, section groups, schema defaults, forms and the common filters. In the preview, adding to the bag opens the drawer with sample items.
+The renderer (`render.mjs`) covers only the parts of Shopify Liquid this theme uses: JSON templates, section groups, schema defaults, forms and the common filters. The preview has a working bag: it starts empty and keeps what you add in your browser. Checkout and forms only run on a real Shopify store.
 
 ## Brand assets
 
