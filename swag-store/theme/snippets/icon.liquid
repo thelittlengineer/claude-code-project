@@ -1,0 +1,39 @@
+{%- comment -%}
+  Inline SVG icons.
+
+  Accepts:
+  - icon {String}: search, account, bag, menu, close, arrow, plus, minus, chevron, star,
+    instagram, tiktok, x, youtube, facebook
+{%- endcomment -%}
+{%- case icon -%}
+  {%- when 'search' -%}
+    <svg class="icon icon--search" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+  {%- when 'account' -%}
+    <svg class="icon icon--account" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4 4-6 8-6s7.2 2 8 6"/></svg>
+  {%- when 'bag' -%}
+    <svg class="icon icon--bag" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4.5 8h15l-1.2 12.5H5.7L4.5 8Z"/><path d="M8.5 10V6.5a3.5 3.5 0 0 1 7 0V10" stroke-linecap="round"/></svg>
+  {%- when 'menu' -%}
+    <svg class="icon icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.5 7h17M3.5 12h17M3.5 17h11"/></svg>
+  {%- when 'close' -%}
+    <svg class="icon icon--close" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m5.5 5.5 13 13M18.5 5.5l-13 13"/></svg>
+  {%- when 'arrow' -%}
+    <svg class="icon icon--arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15.5M13.5 6l6 6-6 6"/></svg>
+  {%- when 'plus' -%}
+    <svg class="icon icon--plus" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+  {%- when 'minus' -%}
+    <svg class="icon icon--minus" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 12h14"/></svg>
+  {%- when 'chevron' -%}
+    <svg class="icon icon--chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  {%- when 'star' -%}
+    <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="m12 1.8 2.9 6.4 7 .7-5.2 4.7 1.5 6.9L12 17l-6.2 3.5 1.5-6.9L2.1 8.9l7-.7L12 1.8Z"/></svg>
+  {%- when 'instagram' -%}
+    <svg class="icon icon--social" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>
+  {%- when 'tiktok' -%}
+    <svg class="icon icon--social" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M16.6 3c.4 2.3 1.9 3.9 4.2 4.1v3.1c-1.5.1-2.9-.4-4.2-1.2v6.2c0 3.4-2.5 5.8-5.8 5.8S5 18.4 5 15.2c0-3.3 2.8-5.8 6.2-5.5v3.2c-1.5-.3-3 .7-3 2.3 0 1.4 1.1 2.5 2.6 2.5 1.6 0 2.6-1.1 2.6-2.9V3h3.2Z"/></svg>
+  {%- when 'x' -%}
+    <svg class="icon icon--social" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.3 4.7H5.5l11.2 14.5Z"/></svg>
+  {%- when 'youtube' -%}
+    <svg class="icon icon--social" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1c.4-1.2.4-3.8.4-3.8s0-2.6-.4-3.8ZM10 15.2V8.8l5.2 3.2-5.2 3.2Z"/></svg>
+  {%- when 'facebook' -%}
+    <svg class="icon icon--social" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1Z"/></svg>
+{%- endcase -%}

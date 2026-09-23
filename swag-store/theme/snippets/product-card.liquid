@@ -1,0 +1,80 @@
+{%- comment -%}
+  Product card for grids.
+
+  Accepts:
+  - product {Object}: the product (omit for an onboarding placeholder)
+  - placeholder_index {Number}: which placeholder illustration to show when product is blank
+  - sizes {String}: image sizes attribute
+  - lazy {Boolean}: lazy-load the image (default true)
+{%- endcomment -%}
+{%- liquid
+  assign sizes = sizes | default: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw'
+  assign loading = 'lazy'
+  if lazy == false
+    assign loading = 'eager'
+  endif
+-%}
+
+{%- if product != blank -%}
+  <div class="card{% if product.available == false %} card--sold-out{% endif %}">
+    <a href="{{ product.url }}" class="card__media ratio ratio--{{ settings.card_image_ratio }}" tabindex="-1" aria-hidden="true">
+      {%- if product.featured_media -%}
+        {{
+          product.featured_media
+          | image_url: width: 1100
+          | image_tag:
+            loading: loading,
+            sizes: sizes,
+            widths: '300, 450, 600, 800, 1100',
+            class: 'card__image',
+            alt: product.featured_media.alt
+        }}
+        {%- if settings.card_show_second_image and product.media[1] -%}
+          {{
+            product.media[1]
+            | image_url: width: 1100
+            | image_tag:
+              loading: 'lazy',
+              sizes: sizes,
+              widths: '300, 450, 600, 800, 1100',
+              class: 'card__image card__image--hover',
+              alt: ''
+          }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-apparel-1' | placeholder_svg_tag: 'card__image placeholder-svg' }}
+      {%- endif -%}
+    </a>
+
+    {%- if product.available == false -%}
+      <span class="tag card__tag">{{ 'products.product.sold_out' | t }}</span>
+    {%- elsif product.compare_at_price > product.price -%}
+      {%- assign sale_label = 'products.product.on_sale' | t -%}
+      {% render 'star-badge', text: sale_label, class: 'card__badge' %}
+    {%- endif -%}
+
+    <div class="card__info">
+      {%- if settings.card_show_vendor -%}
+        <p class="card__vendor">{{ product.vendor | escape }}</p>
+      {%- endif -%}
+      <h3 class="card__title">
+        <a href="{{ product.url }}" class="card__link">{{ product.title | escape }}</a>
+      </h3>
+      {% render 'price', product: product %}
+    </div>
+  </div>
+{%- else -%}
+  {%- liquid
+    assign illustration = placeholder_index | modulo: 4 | plus: 1
+    assign illustration = 'product-apparel-' | append: illustration
+  -%}
+  <div class="card card--placeholder">
+    <div class="card__media ratio ratio--{{ settings.card_image_ratio }}">
+      {{ illustration | placeholder_svg_tag: 'card__image placeholder-svg' }}
+    </div>
+    <div class="card__info">
+      <h3 class="card__title">{{ 'onboarding.product_title' | t }}</h3>
+      <div class="price"><span class="price__current">{{ 4500 | money }}</span></div>
+    </div>
+  </div>
+{%- endif -%}

@@ -1,0 +1,11 @@
+{%- comment -%}
+  A star-shaped badge, borrowed from the stars scattered across the brand card.
+
+  Accepts:
+  - text {String}: badge label
+  - class {String}: extra classes
+{%- endcomment -%}
+<span class="star-badge{% if class != blank %} {{ class }}{% endif %}">
+  <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="m50 3 12.6 28.6 31.1 3.1-23.3 20.9 6.6 30.6L50 70.4 23 86.2l6.6-30.6L6.3 34.7l31.1-3.1L50 3Z"/></svg>
+  <span class="star-badge__text">{{ text }}</span>
+</span>

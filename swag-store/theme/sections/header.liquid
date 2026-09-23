@@ -1,0 +1,172 @@
+{%- liquid
+  assign menu = section.settings.menu
+  assign scheme = section.settings.color_scheme
+-%}
+
+<header class="header scheme-{{ scheme }} header--logo-{{ section.settings.logo_position }}{% if section.settings.sticky %} header--sticky{% endif %}">
+  <div class="page-width header__inner">
+    <div class="header__start">
+      <details class="menu-drawer" data-menu-drawer>
+        <summary class="header__icon menu-drawer__toggle" aria-label="{{ 'sections.header.menu' | t }}">
+          <span class="menu-drawer__open">{% render 'icon', icon: 'menu' %}</span>
+          <span class="menu-drawer__close">{% render 'icon', icon: 'close' %}</span>
+        </summary>
+        <div class="menu-drawer__panel scheme-{{ scheme }} stars">
+          <nav class="menu-drawer__nav" aria-label="{{ 'sections.header.menu' | t }}">
+            <ul class="menu-drawer__list" role="list">
+              {%- for link in menu.links -%}
+                <li>
+                  {%- if link.links != blank -%}
+                    <details class="menu-drawer__sub">
+                      <summary class="menu-drawer__link">
+                        {{ link.title | escape }}
+                        {% render 'icon', icon: 'chevron' %}
+                      </summary>
+                      <ul class="menu-drawer__sublist" role="list">
+                        {%- for child in link.links -%}
+                          <li><a href="{{ child.url }}" class="menu-drawer__sublink"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a></li>
+                        {%- endfor -%}
+                      </ul>
+                    </details>
+                  {%- else -%}
+                    <a href="{{ link.url }}" class="menu-drawer__link"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+          <div class="menu-drawer__footer">
+            {%- if shop.customer_accounts_enabled -%}
+              <a href="{{ routes.account_url }}" class="menu-drawer__utility">
+                {% render 'icon', icon: 'account' %}
+                {%- if customer -%}{{ 'customer.account.title' | t }}{%- else -%}{{ 'customer.log_in' | t }}{%- endif -%}
+              </a>
+            {%- endif -%}
+            {% render 'social-icons' %}
+          </div>
+        </div>
+      </details>
+
+      <nav class="header__nav" aria-label="{{ 'sections.header.menu' | t }}">
+        <ul class="header__menu" role="list">
+          {%- for link in menu.links -%}
+            <li>
+              {%- if link.links != blank -%}
+                <details class="nav-dropdown" data-nav-dropdown>
+                  <summary class="header__link{% if link.child_active %} is-active{% endif %}">
+                    {{ link.title | escape }}
+                    {% render 'icon', icon: 'chevron' %}
+                  </summary>
+                  <ul class="nav-dropdown__list scheme-{{ scheme }}" role="list">
+                    {%- for child in link.links -%}
+                      <li><a href="{{ child.url }}" class="nav-dropdown__link"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                </details>
+              {%- else -%}
+                <a href="{{ link.url }}" class="header__link{% if link.active %} is-active{% endif %}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+
+    {%- if request.page_type == 'index' -%}<h1 class="header__heading">{%- else -%}<div class="header__heading">{%- endif -%}
+      <a href="{{ routes.root_url }}" class="header__logo">
+        {%- if settings.logo != blank -%}
+          {%- assign logo_width_2x = settings.logo_width | times: 2 -%}
+          {{
+            settings.logo
+            | image_url: width: logo_width_2x
+            | image_tag: class: 'header__logo-image', alt: shop.name, width: settings.logo_width, loading: 'eager'
+          }}
+        {%- else -%}
+          {% render 'swag-signature', class: 'header__signature' %}
+        {%- endif -%}
+      </a>
+    {%- if request.page_type == 'index' -%}</h1>{%- else -%}</div>{%- endif -%}
+
+    <div class="header__end">
+      <details class="header__search" data-search-toggle>
+        <summary class="header__icon" aria-label="{{ 'general.search.search' | t }}">
+          {% render 'icon', icon: 'search' %}
+        </summary>
+        <div class="header__search-panel scheme-{{ scheme }}">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="search-form page-width">
+            <label for="HeaderSearch-{{ section.id }}" class="visually-hidden">{{ 'general.search.search' | t }}</label>
+            <input
+              id="HeaderSearch-{{ section.id }}"
+              class="search-form__input"
+              type="search"
+              name="q"
+              placeholder="{{ 'general.search.placeholder' | t }}"
+              autocomplete="off"
+            >
+            <input type="hidden" name="options[prefix]" value="last">
+            <button type="submit" class="search-form__submit" aria-label="{{ 'general.search.submit' | t }}">
+              {% render 'icon', icon: 'arrow' %}
+            </button>
+          </form>
+        </div>
+      </details>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="header__icon header__icon--account">
+          {% render 'icon', icon: 'account' %}
+          <span class="visually-hidden">{%- if customer -%}{{ 'customer.account.title' | t }}{%- else -%}{{ 'customer.log_in' | t }}{%- endif -%}</span>
+        </a>
+      {%- endif -%}
+
+      <a href="{{ routes.cart_url }}" class="header__icon header__cart" data-cart-toggle>
+        {% render 'icon', icon: 'bag' %}
+        <span class="visually-hidden">{{ 'sections.header.cart' | t }}</span>
+        <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "grey", "label": "Star grey" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "grey"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "Sticky header",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

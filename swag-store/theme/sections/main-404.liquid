@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="page-width">
+    <div class="empty-state empty-state--large stars stars--bold">
+      <p class="eyebrow">{% render 'icon', icon: 'star' %} 404 {% render 'icon', icon: 'star' %}</p>
+      {% render 'swag-signature', class: 'empty-state__signature', animate: true %}
+      <h1 class="h2">{{ 'templates.404.title' | t }}</h1>
+      <p>{{ 'templates.404.subtext' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="button">
+        {{ 'general.continue_shopping' | t }}
+        {% render 'icon', icon: 'arrow' %}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "class": "section-main-404",
+  "settings": []
+}
+{% endschema %}

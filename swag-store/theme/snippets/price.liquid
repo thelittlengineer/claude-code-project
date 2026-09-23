@@ -1,0 +1,44 @@
+{%- comment -%}
+  Renders a product price, with the compare-at price struck through when on sale.
+
+  Accepts:
+  - product {Object}: product to price
+  - use_variant {Boolean}: price the selected (or first available) variant instead of the range
+  - class {String}: extra classes
+{%- endcomment -%}
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_compare = compare_at_price | money_with_currency
+  else
+    assign money_price = price | money
+    assign money_compare = compare_at_price | money
+  endif
+
+  assign on_sale = false
+  if compare_at_price > price
+    assign on_sale = true
+  endif
+-%}
+<div class="price{% if on_sale %} price--on-sale{% endif %}{% if available == false %} price--sold-out{% endif %}{% if class != blank %} {{ class }}{% endif %}" data-price>
+  {%- if product.price_varies and use_variant != true -%}
+    <span class="price__current">{{ 'products.product.price.from_price_html' | t: price: money_price }}</span>
+  {%- else -%}
+    <span class="visually-hidden">{% if on_sale %}{{ 'products.product.price.sale_price' | t }}{% else %}{{ 'products.product.price.regular_price' | t }}{% endif %}</span>
+    <span class="price__current">{{ money_price }}</span>
+  {%- endif -%}
+  {%- if on_sale -%}
+    <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+    <s class="price__compare">{{ money_compare }}</s>
+  {%- endif -%}
+</div>

@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "layout": "card",
+        "height": "large",
+        "color_scheme": "grey",
+        "show_stars": true,
+        "show_signature": true,
+        "animate_signature": true,
+        "signature_width": 75,
+        "image_overlay": 35,
+        "eyebrow": "New season",
+        "heading": "Written in the stars",
+        "text": "<p>Streetwear signed by hand. Heavyweight tees, hoodies and caps — made in small runs.</p>",
+        "button_label": "Shop the drop",
+        "button_link": "shopify://collections/all",
+        "button_label_2": "Lookbook",
+        "button_link_2": ""
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "text-1": { "type": "text", "settings": { "text": "New drop", "link": "" } },
+        "text-2": { "type": "text", "settings": { "text": "Signed, sealed, delivered", "link": "" } },
+        "text-3": { "type": "text", "settings": { "text": "Limited runs", "link": "" } },
+        "text-4": { "type": "text", "settings": { "text": "Heavyweight cotton", "link": "" } }
+      },
+      "block_order": ["text-1", "text-2", "text-3", "text-4"],
+      "settings": {
+        "speed": 36,
+        "reverse": false,
+        "tilt": true,
+        "color_scheme": "ink"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Drop 001",
+        "heading": "New arrivals",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "color_scheme": "grey"
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "collection-1": { "type": "collection", "settings": { "collection": "", "title": "Tees" } },
+        "collection-2": { "type": "collection", "settings": { "collection": "", "title": "Hoodies" } },
+        "collection-3": { "type": "collection", "settings": { "collection": "", "title": "Bottoms" } },
+        "collection-4": { "type": "collection", "settings": { "collection": "", "title": "Accessories" } }
+      },
+      "block_order": ["collection-1", "collection-2", "collection-3", "collection-4"],
+      "settings": {
+        "eyebrow": "Shop by",
+        "heading": "Category",
+        "show_view_all": false,
+        "color_scheme": "grey"
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "image_position": "left",
+        "eyebrow": "The story",
+        "heading": "Every piece, signed",
+        "text": "<p>SWAG started as a signature scrawled across a sky full of stars. Every piece carries that mark — heavyweight cotton, relaxed cuts, and runs small enough that you won't see yourself coming down the street.</p>",
+        "show_signoff": true,
+        "button_label": "About us",
+        "button_link": "",
+        "color_scheme": "grey"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "The list",
+        "heading": "Join the constellation",
+        "text": "<p>First dibs on every drop, restock alerts, and nothing you didn't ask for.</p>",
+        "color_scheme": "ink"
+      }
+    }
+  },
+  "order": ["hero", "marquee", "featured", "categories", "story", "newsletter"]
+}

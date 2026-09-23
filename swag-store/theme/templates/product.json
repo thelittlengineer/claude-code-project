@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "text": { "type": "text", "settings": { "text": "Heavyweight cotton" } },
+        "title": { "type": "title", "settings": { "show_vendor": false } },
+        "price": { "type": "price", "settings": {} },
+        "variant_picker": { "type": "variant_picker", "settings": {} },
+        "quantity_selector": { "type": "quantity_selector", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": true } },
+        "description": { "type": "description", "settings": {} },
+        "size_fit": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Size & fit",
+            "open": false,
+            "content": "<p>Relaxed, boxy fit with dropped shoulders. Take your usual size for the intended look, or size down for a closer fit.</p>",
+            "page": ""
+          }
+        },
+        "care": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fabric & care",
+            "open": false,
+            "content": "<p>100% cotton. Wash cold, inside out. Hang dry to keep the signature print sharp.</p>",
+            "page": ""
+          }
+        },
+        "shipping": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & returns",
+            "open": false,
+            "content": "<p>Free shipping over $75. Returns accepted within 30 days on unworn items with tags.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": ["text", "title", "price", "variant_picker", "quantity_selector", "buy_buttons", "description", "size_fit", "care", "shipping"],
+      "settings": {
+        "gallery_layout": "grid"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "eyebrow": "Pairs well with",
+        "heading": "You may also like",
+        "products_to_show": 4,
+        "color_scheme": "grey"
+      }
+    }
+  },
+  "order": ["main", "recommendations"]
+}

@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Before you go",
+        "heading": "Complete the fit",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "show_view_all": false,
+        "color_scheme": "grey"
+      }
+    }
+  },
+  "order": ["main", "featured"]
+}

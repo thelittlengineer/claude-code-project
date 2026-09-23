@@ -1,0 +1,13 @@
+{
+  "name": "swag-theme-preview",
+  "private": true,
+  "type": "module",
+  "description": "Renders the SWAG Shopify theme locally with sample products, for previews and screenshots.",
+  "scripts": {
+    "build": "node render.mjs",
+    "screenshots": "node screenshots.mjs"
+  },
+  "dependencies": {
+    "liquidjs": "^10.21.0"
+  }
+}

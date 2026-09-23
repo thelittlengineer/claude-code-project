@@ -1,0 +1,60 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ 'sections.collection_list.eyebrow' | t }}</p>
+        <h1 class="h1">{{ section.settings.title | escape }}</h1>
+      </div>
+    </div>
+
+    {%- paginate collections by 24 -%}
+      <ul class="collection-grid collection-grid--4" role="list">
+        {%- for collection in collections -%}
+          <li>
+            <a href="{{ collection.url }}" class="collection-tile">
+              <div class="collection-tile__media ratio ratio--square stars">
+                {%- if collection.featured_image -%}
+                  {{
+                    collection.featured_image
+                    | image_url: width: 900
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '300, 450, 600, 900',
+                      sizes: '(min-width: 990px) 25vw, 50vw',
+                      class: 'collection-tile__image',
+                      alt: collection.title
+                  }}
+                {%- else -%}
+                  {%- assign illustration = forloop.index | modulo: 4 | plus: 1 -%}
+                  {%- assign illustration = 'collection-apparel-' | append: illustration -%}
+                  {{ illustration | placeholder_svg_tag: 'collection-tile__image placeholder-svg' }}
+                {%- endif -%}
+                <span class="collection-tile__number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
+              </div>
+              <div class="collection-tile__label">
+                <span class="collection-tile__title">{{ collection.title | escape }}</span>
+                {% render 'icon', icon: 'arrow' %}
+              </div>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "class": "section-main-list-collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collections"
+    }
+  ]
+}
+{% endschema %}
