@@ -1,6 +1,6 @@
 /*
- * SWAG — Shopify theme built from the purple signature logo.
- * A charcoal ground, and a handwritten "SWAG" in a pen line fading from lilac to indigo.
+ * SWAG — Shopify theme built from the green brand card.
+ * Acid lime and black organic pattern, a blue-black band, and a handwritten "SWAG" signature in olive.
  */
 
 /* ---------- Tokens ---------- */
@@ -25,12 +25,12 @@
   --line: color-mix(in srgb, var(--color-text) 18%, transparent);
   --btn-bg: var(--color-accent);
   --btn-fg: var(--color-black);
-  --wordmark-start: #b4a0ce;
-  --wordmark-middle: #837aba;
-  --wordmark-end: #4c4aa2;
+  --wordmark-start: #c6db6a;
+  --wordmark-middle: #9fb64a;
+  --wordmark-end: #6d8526;
 }
 
-.scheme-lilac {
+.scheme-lime {
   --bg: var(--color-accent);
   --fg: var(--color-black);
   --accent: var(--color-black);
@@ -46,7 +46,7 @@
 }
 
 .scheme-dark,
-.scheme-lilac {
+.scheme-lime {
   background: var(--bg);
   color: var(--fg);
 }

@@ -7,14 +7,16 @@ const W = 800;
 const H = 1000;
 let clipId = 0;
 
-// The signature strokes and the brand art, read from the theme's traced brand assets.
+// The signature strokes and the pattern shapes, read from the theme's traced brand assets.
 export function brandArt(assetsDir) {
   const signatureSvg = fs.readFileSync(path.join(assetsDir, 'swag-wordmark.svg'), 'utf8');
   const [, w, h] = signatureSvg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
   const d = signatureSvg.match(/<path d="([^"]+)"/)[1];
   const pen = Number(signatureSvg.match(/stroke-width="([\d.]+)"/)[1]);
-  const art = fs.readFileSync(path.join(assetsDir, 'pattern.svg'), 'utf8');
-  return { wordmark: { w: Number(w), h: Number(h), d, pen }, art };
+  const patternSvg = fs.readFileSync(path.join(assetsDir, 'pattern.svg'), 'utf8');
+  const [, pw, ph] = patternSvg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+  const pd = [...patternSvg.matchAll(/<path[^>]* d="([^"]+)"/g)].map((x) => x[1]).join('');
+  return { wordmark: { w: Number(w), h: Number(h), d, pen }, pattern: { w: Number(pw), h: Number(ph), d: pd } };
 }
 
 // The signature placed at (cx, cy) and scaled to `width` px, optionally rotated.
@@ -24,12 +26,13 @@ function signature(art, { cx, cy, width, color, rotate = 0 }) {
   return `<g transform="translate(${(cx - (w * scale) / 2).toFixed(1)} ${(cy - (h * scale) / 2).toFixed(1)}) rotate(${rotate} ${(w * scale) / 2} ${(h * scale) / 2}) scale(${scale.toFixed(4)})"><path d="${d}" fill="none" stroke="${color}" stroke-width="${(pen * 1.3).toFixed(2)}" stroke-linecap="round" stroke-linejoin="round"/></g>`;
 }
 
-// The purple brand art as a print panel, clipped to a rounded box (or a custom shape).
-function patternPanel(art, { x, y, w, h, radius = 18, clip = null }) {
+// The lime-and-black pattern as a print panel, clipped to a rounded box.
+function patternPanel(art, { x, y, w, h, lime = '#bad406', ink = '#000', radius = 18, clip = null }) {
+  const { w: pw, h: ph, d } = art.pattern;
+  const scale = Math.max(w / pw, h / ph);
   const id = `clip${clipId++}`;
   const shape = clip ? `<path d="${clip}"/>` : `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${radius}"/>`;
-  const inner = art.art.replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '').replace(/id="(field|glow)"/g, `id="$1${id}"`).replace(/url\(#(field|glow)\)/g, `url(#$1${id})`);
-  return `<clipPath id="${id}">${shape}</clipPath><g clip-path="url(#${id})"><svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">${inner}</svg></g>`;
+  return `<clipPath id="${id}">${shape}</clipPath><g clip-path="url(#${id})"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${lime}"/><g transform="translate(${x} ${y}) scale(${scale.toFixed(4)})"><path fill="${ink}" fill-rule="evenodd" d="${d}"/></g></g>`;
 }
 
 const shade = (hex, amount) => {
@@ -41,7 +44,7 @@ const shade = (hex, amount) => {
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 };
 
-function frame(body, { bg = '#eceaf2', shadow = true } = {}) {
+function frame(body, { bg = '#e8e9e2', shadow = true } = {}) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
 <rect width="${W}" height="${H}" fill="${bg}"/>
 ${shadow ? `<ellipse cx="400" cy="905" rx="250" ry="22" fill="#000" opacity=".12"/>` : ''}
@@ -163,16 +166,16 @@ ${signature(sig, { cx: 400, cy: 610, width: 300, color: print, rotate: -6 })}`);
 }
 
 // A flat-lay for the "story" section: tee, cap and stars on a darker ground.
-// The story image: a black tee and a lilac cap laid flat on a clean light ground, a swatch of the purple art peeking in.
+// The story image: a black tee and a lime cap laid flat on a clean light ground, a pattern swatch peeking in.
 function flatlay(sig) {
   const teeScaled = `<g transform="translate(70 150) scale(.74) rotate(-7 400 500)">
 <path d="${TEE}" fill="#141414"/>
 <path d="${TEE_COLLAR}" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round"/>
-${signature(sig, { cx: 400, cy: 380, width: 250, color: '#a898da', rotate: -4 })}
+${signature(sig, { cx: 400, cy: 380, width: 250, color: '#bad406', rotate: -4 })}
 </g>`;
   const capScaled = `<g transform="translate(360 560) scale(.52) rotate(12 400 520)">
-<path d="M150 640C132 470 236 350 392 346C520 344 606 420 624 560C628 590 626 620 618 646C480 676 290 674 150 640Z" fill="#a898da"/>
-<path d="M420 646C520 640 600 628 632 612C700 620 760 650 752 684C700 716 560 716 470 700C420 692 396 668 420 646Z" fill="#8577c4"/>
+<path d="M150 640C132 470 236 350 392 346C520 344 606 420 624 560C628 590 626 620 618 646C480 676 290 674 150 640Z" fill="#bad406"/>
+<path d="M420 646C520 640 600 628 632 612C700 620 760 650 752 684C700 716 560 716 470 700C420 692 396 668 420 646Z" fill="#8fa404"/>
 ${signature(sig, { cx: 400, cy: 500, width: 250, color: '#000', rotate: -3 })}
 </g>`;
   return frame(
@@ -185,21 +188,21 @@ ${capScaled}`,
 }
 
 export function buildMockups(sig) {
-  const lilac = '#a898da';
+  const lime = '#bad406';
   return {
-    'tee-black-front': tee(sig, { color: '#161616', print: lilac }),
-    'tee-black-back': tee(sig, { color: '#161616', print: lilac, back: true }),
+    'tee-black-front': tee(sig, { color: '#161616', print: lime }),
+    'tee-black-back': tee(sig, { color: '#161616', print: lime, back: true }),
     'tee-stone-front': tee(sig, { color: '#eceee0', print: '#000' }),
     'tee-stone-back': tee(sig, { color: '#eceee0', print: '#000', back: true }),
-    'longsleeve-front': tee(sig, { color: '#4c4aa2', print: lilac, sleeve: 'long' }),
-    'longsleeve-back': tee(sig, { color: '#4c4aa2', print: lilac, sleeve: 'long', back: true }),
-    'hoodie-front': hoodie(sig, { color: '#1a1a1a', print: lilac }),
-    'hoodie-back': hoodie(sig, { color: '#1a1a1a', print: lilac, back: true }),
-    'crewneck-front': tee(sig, { color: lilac, print: '#000', sleeve: 'long' }),
-    'crewneck-back': tee(sig, { color: lilac, print: '#000', sleeve: 'long', back: true }),
-    'pants-front': pants(sig, { color: '#232221', print: lilac }),
-    'cap-front': cap(sig, { color: lilac, print: '#000' }),
-    'cap-black': cap(sig, { color: '#161616', print: lilac }),
+    'longsleeve-front': tee(sig, { color: '#4e5b1e', print: lime, sleeve: 'long' }),
+    'longsleeve-back': tee(sig, { color: '#4e5b1e', print: lime, sleeve: 'long', back: true }),
+    'hoodie-front': hoodie(sig, { color: '#1a1a1a', print: lime }),
+    'hoodie-back': hoodie(sig, { color: '#1a1a1a', print: lime, back: true }),
+    'crewneck-front': tee(sig, { color: lime, print: '#000', sleeve: 'long' }),
+    'crewneck-back': tee(sig, { color: lime, print: '#000', sleeve: 'long', back: true }),
+    'pants-front': pants(sig, { color: '#232221', print: lime }),
+    'cap-front': cap(sig, { color: lime, print: '#000' }),
+    'cap-black': cap(sig, { color: '#161616', print: lime }),
     'tote-front': tote(sig, { color: '#eceee0', print: '#000' }),
     flatlay: flatlay(sig),
   };

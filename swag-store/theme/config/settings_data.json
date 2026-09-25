@@ -3,8 +3,8 @@
   "presets": {
     "Default": {
       "logo_width": 140,
-      "color_background": "#28272D",
-      "color_card": "#ECEAF2",
+      "color_background": "#00070F",
+      "color_card": "#E8E9E2",
       "type_header_font": "inter_n7",
       "heading_uppercase": false,
       "type_body_font": "inter_n4",
@@ -17,9 +17,9 @@
       "cart_type": "drawer",
       "show_cart_note": false,
       "currency_code_enabled": false,
-      "color_text": "#EEEBF5",
-      "color_accent": "#A898DA",
-      "color_black": "#17161C",
+      "color_text": "#EEF3DA",
+      "color_accent": "#BAD406",
+      "color_black": "#000000",
       "pattern_page": "none"
     }
   }
