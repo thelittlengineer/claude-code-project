@@ -1,6 +1,6 @@
 {%- assign s = section.settings -%}
 
-<footer class="footer scheme-{{ s.color_scheme }} stars stars--subtle">
+<footer class="footer scheme-{{ s.color_scheme }} pattern pattern--subtle">
   <div class="page-width">
     {%- if section.blocks.size > 0 -%}
       {%- capture social_icons -%}{% render 'social-icons' %}{%- endcapture -%}
@@ -34,9 +34,9 @@
       </div>
     {%- endif -%}
 
-    {%- if s.show_signature -%}
-      <a href="{{ routes.root_url }}" class="footer__signature" aria-label="{{ shop.name | escape }}">
-        {% render 'swag-signature', animate: true %}
+    {%- if s.show_wordmark -%}
+      <a href="{{ routes.root_url }}" class="footer__wordmark" aria-label="{{ shop.name | escape }}">
+        {% render 'swag-wordmark', animate: true %}
       </a>
     {%- endif -%}
 
@@ -68,8 +68,8 @@
   "settings": [
     {
       "type": "checkbox",
-      "id": "show_signature",
-      "label": "Show giant signature",
+      "id": "show_wordmark",
+      "label": "Show giant wordmark",
       "default": true
     },
     {
@@ -89,10 +89,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "ink"
+      "default": "dark"
     }
   ],
   "blocks": [
@@ -113,7 +113,7 @@
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "default": "<p>Streetwear signed by hand. Small runs, heavyweight fabrics, no restocks on the limited stuff.</p>"
+          "default": "<p>Loud streetwear, made in small runs. Small runs, heavyweight fabrics, no restocks on the limited stuff.</p>"
         }
       ]
     },

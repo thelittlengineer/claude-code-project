@@ -12,7 +12,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Leave the logo empty to use the built-in SWAG signature, drawn from the grey star-field brand mark."
+        "content": "Leave the logo empty to use the built-in \"swag\" wordmark, traced from the green brand card."
       },
       {
         "type": "image_picker",
@@ -43,22 +43,35 @@
       {
         "type": "color",
         "id": "color_background",
-        "label": "Background (star grey)",
-        "default": "#9B9391"
+        "label": "Background",
+        "info": "The blue-black band from the logo card.",
+        "default": "#00070F"
       },
       {
         "type": "color",
-        "id": "color_foreground",
-        "label": "Ink",
-        "info": "Text, stars and the signature. Also the background of dark sections.",
-        "default": "#0B0B0B"
+        "id": "color_text",
+        "label": "Text",
+        "default": "#EEF3DA"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Lime",
+        "info": "Buttons, highlights and the Lime color scheme.",
+        "default": "#BAD406"
+      },
+      {
+        "type": "color",
+        "id": "color_black",
+        "label": "Pattern black",
+        "info": "Text on lime.",
+        "default": "#000000"
       },
       {
         "type": "color",
         "id": "color_card",
-        "label": "Card background",
-        "info": "Behind product and collection images.",
-        "default": "#ACA5A3"
+        "label": "Product image background",
+        "default": "#CBD68C"
       }
     ]
   },
@@ -93,28 +106,23 @@
     ]
   },
   {
-    "name": "Stars",
+    "name": "Pattern",
     "settings": [
       {
         "type": "select",
-        "id": "stars_page",
-        "label": "Stars on page background",
+        "id": "pattern_page",
+        "label": "Faint pattern behind the page",
         "options": [
-          { "value": "none", "label": "None" },
-          { "value": "subtle", "label": "Subtle" },
-          { "value": "bold", "label": "Bold" }
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "subtle",
+            "label": "Subtle"
+          }
         ],
-        "default": "subtle"
-      },
-      {
-        "type": "range",
-        "id": "stars_size",
-        "min": 400,
-        "max": 1200,
-        "step": 20,
-        "unit": "px",
-        "label": "Star pattern scale",
-        "default": 800
+        "default": "none"
       }
     ]
   },
@@ -152,8 +160,14 @@
         "id": "card_image_ratio",
         "label": "Image ratio",
         "options": [
-          { "value": "portrait", "label": "Portrait" },
-          { "value": "square", "label": "Square" }
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          }
         ],
         "default": "portrait"
       },
@@ -179,8 +193,14 @@
         "id": "cart_type",
         "label": "Cart type",
         "options": [
-          { "value": "drawer", "label": "Drawer" },
-          { "value": "page", "label": "Page" }
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
         ],
         "default": "drawer"
       },

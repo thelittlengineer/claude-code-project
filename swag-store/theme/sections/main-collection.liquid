@@ -2,10 +2,10 @@
 
 <section class="section section--tight collection">
   <div class="page-width">
-    <div class="collection__banner stars stars--bold stars--clear">
-      <div class="collection__banner-inner">
+    <div class="collection__banner pattern pattern--bold">
+      <div class="collection__banner-inner panel">
         <p class="eyebrow">
-          {% render 'icon', icon: 'star' %}
+          {% render 'icon', icon: 'blob' %}
           {{ 'sections.collection.product_count' | t: count: collection.products_count }}
         </p>
         <h1 class="h1 collection__title">{{ collection.title | escape }}</h1>
@@ -145,7 +145,7 @@
 
       {%- if collection.products.size == 0 -%}
         <div class="empty-state">
-          {% render 'swag-signature', class: 'empty-state__signature' %}
+          {% render 'swag-wordmark', class: 'empty-state__wordmark' %}
           <p class="h3">{{ 'sections.collection.empty' | t }}</p>
           <a href="{{ collection.url }}" class="button button--outline">{{ 'sections.collection.clear_all' | t }}</a>
         </div>

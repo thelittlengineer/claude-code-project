@@ -29,7 +29,7 @@
         -%}
         <li {{ block.shopify_attributes }}>
           <a href="{{ collection.url | default: routes.collections_url }}" class="collection-tile">
-            <div class="collection-tile__media ratio ratio--square stars">
+            <div class="collection-tile__media ratio ratio--square pattern">
               {%- if image != blank -%}
                 {{
                   image
@@ -88,10 +88,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "grey"
+      "default": "dark"
     }
   ],
   "blocks": [

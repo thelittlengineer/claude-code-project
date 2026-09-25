@@ -19,8 +19,10 @@
   {{ accent_font_bold | font_face: font_display: 'swap' }}
 
   :root {
-    --color-grey: {{ settings.color_background }};
-    --color-ink: {{ settings.color_foreground }};
+    --color-background: {{ settings.color_background }};
+    --color-text: {{ settings.color_text }};
+    --color-accent: {{ settings.color_accent }};
+    --color-black: {{ settings.color_black }};
     --color-card: {{ settings.color_card }};
 
     --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
@@ -39,7 +41,13 @@
     --page-width: {{ settings.page_width | append: 'px' }};
     --radius: {{ settings.corner_radius | append: 'px' }};
     --radius-small: {{ settings.corner_radius | divided_by: 2 | append: 'px' }};
-    --stars-size: {{ settings.stars_size | append: 'px' }};
     --logo-width: {{ settings.logo_width | append: 'px' }};
+  }
+
+  {%- comment -%} Set here, not as a custom property, so the URL resolves the same everywhere. {%- endcomment -%}
+  .pattern::before,
+  .hero__pattern,
+  body.pattern-page--subtle::before {
+    background-image: url({{ 'pattern.svg' | asset_url }});
   }
 {% endstyle %}

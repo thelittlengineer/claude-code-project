@@ -4,7 +4,7 @@
       <span class="flip">{% render 'icon', icon: 'arrow' %}</span>
       {{ blog.title | escape }}
     </a>
-    <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ article.published_at | time_tag: format: 'date' }}</p>
+    <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ article.published_at | time_tag: format: 'date' }}</p>
     <h1 class="h1 page__title">{{ article.title | escape }}</h1>
 
     {%- if article.image -%}
@@ -26,7 +26,7 @@
 
     <div class="signoff">
       <span class="signoff__label">{{ 'sections.image_with_text.signed' | t }}</span>
-      {% render 'swag-signature', class: 'signoff__signature', animate: true %}
+      {% render 'swag-wordmark', class: 'signoff__wordmark', animate: true %}
     </div>
   </div>
 </article>

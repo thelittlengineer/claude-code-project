@@ -9,7 +9,7 @@
           "type": "text",
           "settings": {
             "heading": "SWAG",
-            "text": "<p>Streetwear signed by hand. Small runs, heavyweight fabrics, no restocks on the limited stuff.</p>"
+            "text": "<p>Loud streetwear, made in small runs. Small runs, heavyweight fabrics, no restocks on the limited stuff.</p>"
           }
         },
         "menu-shop": {
@@ -35,10 +35,10 @@
       },
       "block_order": ["text", "menu-shop", "menu-help", "social"],
       "settings": {
-        "show_signature": true,
+        "show_wordmark": true,
         "show_payment_icons": true,
         "show_powered_by": false,
-        "color_scheme": "ink"
+        "color_scheme": "dark"
       }
     }
   },

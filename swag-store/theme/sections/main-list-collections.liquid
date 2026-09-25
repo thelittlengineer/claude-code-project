@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ 'sections.collection_list.eyebrow' | t }}</p>
+        <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ 'sections.collection_list.eyebrow' | t }}</p>
         <h1 class="h1">{{ section.settings.title | escape }}</h1>
       </div>
     </div>
@@ -12,7 +12,7 @@
         {%- for collection in collections -%}
           <li>
             <a href="{{ collection.url }}" class="collection-tile">
-              <div class="collection-tile__media ratio ratio--square stars">
+              <div class="collection-tile__media ratio ratio--square pattern">
                 {%- if collection.featured_image -%}
                   {{
                     collection.featured_image

@@ -1,0 +1,14 @@
+{%- comment -%}
+  The "swag" wordmark from the green brand card. Drawn with a CSS mask (see --wordmark in base.css)
+  and filled with the olive gradient on dark, or black on lime.
+
+  Accepts:
+  - class {String}: extra classes
+  - animate {Boolean}: wipe the wordmark on, left to right, when it scrolls into view (respects reduced motion)
+  - label {String}: accessible name, defaults to the shop name
+{%- endcomment -%}
+<span
+  class="wordmark{% if animate %} wordmark--animate{% endif %}{% if class != blank %} {{ class }}{% endif %}"
+  role="img"
+  aria-label="{{ label | default: shop.name | escape }}"
+></span>

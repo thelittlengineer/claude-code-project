@@ -1,6 +1,6 @@
 # SWAG — Shopify theme
 
-A Shopify (Online Store 2.0) theme for a clothing brand, designed from the grey **SWAG** logo card: a warm grey sky, scattered black stars, and a hand-signed wordmark.
+A Shopify (Online Store 2.0) theme for a clothing brand, designed from the green **SWAG** logo card: an acid-lime and black organic pattern, a blue-black band, and a rounded "swag" script fading from light to dark olive.
 
 ![Home page](docs/home-desktop.png)
 
@@ -12,21 +12,21 @@ A Shopify (Online Store 2.0) theme for a clothing brand, designed from the grey 
 
 | Logo detail | Where it shows up in the theme |
 | --- | --- |
-| Warm grey card, `#9B9391` (sampled from the logo) | Page background, header, cards (`Theme settings → Colors`) |
-| Black ink, `#0B0B0B` | Text, buttons, the "Ink" color scheme for dark sections |
-| Scattered five-point stars | A seamless star tile behind the hero, newsletter, footer, collection banner, and a faint layer across the whole page (`Theme settings → Stars`) |
-| The handwritten signature | Traced into vector strokes: header logo, hero, footer, empty states and sign-offs. It writes itself on like a pen when it scrolls into view |
-| Rounded card corners | Rounded product and collection cards and the hero card (`Layout → Corner radius`) |
+| The lime-and-black loop pattern | Traced from the card into `assets/pattern.svg`: the top of the hero, the newsletter card, the collection banner, the password page, and a faint layer in the footer |
+| Blue-black band, `#00070F` | Page background and the "Dark" color scheme (`Theme settings → Colors`) |
+| Acid lime, `#BAD406` | Buttons, highlights, the announcement ticker, the scrolling strip and the "Lime" color scheme |
+| The rounded "swag" script | Traced into `assets/swag-wordmark.svg`: header logo, hero, footer, sign-offs and empty states. It carries the logo's olive gradient on dark and turns black on lime, and wipes on left to right as it scrolls into view |
+| Card layout: pattern on top, band below | The home page hero is the logo card at page scale |
 
-Stars also turn up in small ways: star-shaped **Sale** badges, star separators in the scrolling text, and a star on the Add to bag button.
+The pattern also turns up in small ways: blob-shaped **Sale** badges, blob separators in the scrolling text, and a blob on the Add to bag button. Text that sits on the bold pattern goes in a dark panel, like the band on the card.
 
-Typography pairs the signature with bold uppercase **Inter** headings and **Anonymous Pro** mono labels and prices. All three fonts can be changed in the theme editor.
+Typography pairs the wordmark with bold uppercase **Inter** headings and **Anonymous Pro** mono labels and prices. All three fonts can be changed in the theme editor.
 
 ## What's included
 
-- **Home page sections:** Star hero (with an optional photo background), scrolling text, featured collection, collection list, image with text (signed off with the signature), rich text, newsletter
+- **Home page sections:** Pattern hero (with an optional photo instead of the pattern), scrolling text, featured collection, collection list, image with text (signed off with the wordmark), rich text, newsletter
 - **Store pages:** product page (gallery, size pills that strike through sold-out sizes, quantity, dynamic checkout, collapsible tabs, recommendations, app blocks), collection page (Shopify filters and sorting), cart page, search, blog, article, page, contact page, 404, gift card, and a "coming soon" password page
-- **Header and footer:** announcement ticker, sticky header with dropdown menus, mobile menu, search, account and a bag icon with an item count; footer with menus, social icons, payment icons and a giant signature
+- **Header and footer:** announcement ticker, sticky header with dropdown menus, mobile menu, search, account and a bag icon with an item count; footer with menus, social icons, payment icons and a giant wordmark
 - **Cart drawer:** Add to bag opens a slide-out cart (Section Rendering API). Set `Theme settings → Cart → Cart type` to "Page" to use the cart page instead
 - No build step and no dependencies: vanilla JS (`assets/theme.js`) and one stylesheet (`assets/base.css`). It passes `shopify theme check` with no offenses
 
@@ -52,16 +52,16 @@ shopify theme push --path swag-store/theme --unpublished   # or: shopify theme d
 1. **Menus** (`Content → Menus`): the header uses `main-menu` and the footer uses `footer`. Nested links become dropdowns.
 2. **Collections:** create collections such as Tees, Hoodies, Bottoms and Accessories. In the theme editor, choose them in *Collection list* and choose the new drop in *Featured collection*.
 3. **Product photos:** cards and the product gallery are portrait **4:5** (square is an option under *Product cards*). The second photo shows on hover.
-4. **Logo:** the signature is built in. To use an image instead, upload one under `Theme settings → Logo`.
+4. **Logo:** the wordmark is built in. To use an image instead, upload one under `Theme settings → Logo`.
 5. **Social links:** add them under `Theme settings → Social media`. The footer and mobile menu show icons only for the links you fill in.
 6. **Filters:** install Shopify's *Search & Discovery* app to choose the filters shown on collection pages.
-7. **Launching soon?** Turn on password protection (`Online Store → Preferences`). The password page shows the signature over the stars with an email sign-up.
+7. **Launching soon?** Turn on password protection (`Online Store → Preferences`). The password page shows the wordmark on a panel over the pattern, with an email sign-up.
 
 Customer account pages use Shopify's new customer accounts, so the theme has no legacy account templates.
 
 ## Preview without a store
 
-`preview/` renders the theme locally with a sample catalogue: SWAG tees, hoodie, crewneck, sweatpants, cap and tote, drawn as flat SVG mock-ups with the signature printed on. Use it to check design changes or take screenshots.
+`preview/` renders the theme locally with a sample catalogue: SWAG tees, hoodie, crewneck, sweatpants, cap and tote, drawn as flat SVG mock-ups printed with the wordmark and pattern. Use it to check design changes or take screenshots.
 
 ```sh
 cd swag-store/preview
@@ -74,7 +74,7 @@ The renderer (`render.mjs`) covers only the parts of Shopify Liquid this theme u
 
 ## Brand assets
 
-`tools/build_brand_assets.py` rebuilds the signature snippet and the star tile from `reference/swag-logo-card.png`, the grey logo card cropped from the original image. It traces the pen strokes, removes the stars that touch them, smooths the result into SVG, and generates the matching star pattern.
+`tools/build_brand_assets.py` rebuilds the wordmark and pattern from `reference/swag-logo-green.png`, the green logo card cropped from the original image. It traces the letters and the pattern into SVG and inlines the wordmark into `base.css` as a mask, so it can take the olive gradient or any colour.
 
 ```sh
 pip install pillow numpy scipy scikit-image
@@ -88,6 +88,6 @@ swag-store/
 ├── theme/        # the Shopify theme (upload this)
 ├── preview/      # local renderer, sample data and product mock-ups
 ├── tools/        # brand asset generator
-├── reference/    # the grey SWAG logo card the design is based on
+├── reference/    # the green SWAG logo card the design is based on
 └── docs/         # screenshots
 ```

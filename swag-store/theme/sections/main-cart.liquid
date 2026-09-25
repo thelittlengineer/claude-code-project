@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ 'cart.item_count' | t: count: cart.item_count }}</p>
+        <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ 'cart.item_count' | t: count: cart.item_count }}</p>
         <h1 class="h1">{{ 'cart.title' | t }}</h1>
       </div>
       {%- if cart.item_count > 0 -%}
@@ -14,8 +14,8 @@
     </div>
 
     {%- if cart.item_count == 0 -%}
-      <div class="empty-state stars stars--bold">
-        {% render 'swag-signature', class: 'empty-state__signature', animate: true %}
+      <div class="empty-state pattern">
+        {% render 'swag-wordmark', class: 'empty-state__wordmark', animate: true %}
         <p class="h3">{{ 'cart.empty' | t }}</p>
         <a href="{{ routes.all_products_collection_url }}" class="button">
           {{ 'cart.continue_shopping' | t }}
@@ -76,7 +76,7 @@
                   {%- endif -%}
                   <span class="price__current">{{ item.final_line_price | money }}</span>
                   {%- for discount in item.line_level_discount_allocations -%}
-                    <p class="cart-item__discount">{% render 'icon', icon: 'star' %} {{ discount.discount_application.title | escape }}</p>
+                    <p class="cart-item__discount">{% render 'icon', icon: 'blob' %} {{ discount.discount_application.title | escape }}</p>
                   {%- endfor -%}
                 </div>
               </li>
@@ -93,7 +93,7 @@
 
             {%- for discount in cart.cart_level_discount_applications -%}
               <p class="cart-summary__row">
-                <span>{% render 'icon', icon: 'star' %} {{ discount.title | escape }}</span>
+                <span>{% render 'icon', icon: 'blob' %} {{ discount.title | escape }}</span>
                 <span>-{{ discount.total_allocated_amount | money }}</span>
               </p>
             {%- endfor -%}

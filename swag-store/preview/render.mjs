@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Liquid, Tag, Drop, Value } from 'liquidjs';
 import { products, collections, linklists, makeCart } from './sample-data.mjs';
-import { signaturePaths, buildMockups } from './mockups.mjs';
+import { brandArt, buildMockups } from './mockups.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const THEME = path.join(here, '..', 'theme');
@@ -457,7 +457,7 @@ async function main() {
     fs.copyFileSync(path.join(THEME, 'assets', asset), path.join(OUT, 'assets', asset));
   }
 
-  const sig = signaturePaths(path.join(THEME, 'snippets', 'swag-signature.liquid'));
+  const sig = brandArt(path.join(THEME, 'assets'));
   for (const [name, svg] of Object.entries(buildMockups(sig))) {
     fs.writeFileSync(path.join(OUT, 'images', `${name}.svg`), svg);
   }
@@ -496,7 +496,7 @@ async function main() {
     }
   }
   const icons = {};
-  for (const name of ['minus', 'plus', 'close', 'arrow', 'star']) {
+  for (const name of ['minus', 'plus', 'close', 'arrow', 'blob']) {
     icons[name] = (await engine.parseAndRender(`{% render 'icon', icon: '${name}' %}`)).trim();
   }
   const t = (key, params) => filters.t(key, ...(params ? Object.entries(params) : []));

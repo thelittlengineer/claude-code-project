@@ -5,13 +5,13 @@
     {%- else -%}
       {%- assign block = section.blocks.first -%}
       <p class="announcement-bar__static" {{ block.shopify_attributes }}>
-        {% render 'icon', icon: 'star' %}
+        {% render 'icon', icon: 'blob' %}
         {%- if block.settings.link != blank -%}
           <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
         {%- else -%}
           {{ block.settings.text | escape }}
         {%- endif -%}
-        {% render 'icon', icon: 'star' %}
+        {% render 'icon', icon: 'blob' %}
       </p>
     {%- endif -%}
   </div>
@@ -47,10 +47,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "ink"
+      "default": "lime"
     }
   ],
   "blocks": [

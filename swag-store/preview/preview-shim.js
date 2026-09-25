@@ -111,7 +111,7 @@
     var count = itemCount();
     return (
       '<section class="section section--tight cart-page"><div class="page-width">' +
-      '<div class="section-heading"><div><p class="eyebrow">' + icon.star + ' ' + esc(count === 1 ? t.oneItem : t.manyItems.replace('{{ count }}', count)) + '</p>' +
+      '<div class="section-heading"><div><p class="eyebrow">' + icon.blob + ' ' + esc(count === 1 ? t.oneItem : t.manyItems.replace('{{ count }}', count)) + '</p>' +
       '<h1 class="h1">' + esc(t.title) + '</h1></div>' +
       '<a href="' + data.shopUrl + '" class="link-arrow">' + esc(t.continueShopping) + ' ' + icon.arrow + '</a></div>' +
       '<form action="' + data.cartUrl + '" method="post" class="cart-page__grid">' +

@@ -13,7 +13,7 @@
         "products_to_show": 4,
         "columns_desktop": 4,
         "show_view_all": false,
-        "color_scheme": "grey"
+        "color_scheme": "dark"
       }
     }
   },

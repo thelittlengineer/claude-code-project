@@ -31,7 +31,7 @@
       "settings": {
         "scroll": true,
         "speed": 40,
-        "color_scheme": "ink"
+        "color_scheme": "lime"
       }
     },
     "header": {
@@ -39,7 +39,7 @@
       "settings": {
         "menu": "main-menu",
         "logo_position": "center",
-        "color_scheme": "grey",
+        "color_scheme": "dark",
         "sticky": true
       }
     }

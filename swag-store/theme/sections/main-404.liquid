@@ -1,14 +1,16 @@
 <section class="section">
   <div class="page-width">
-    <div class="empty-state empty-state--large stars stars--bold">
-      <p class="eyebrow">{% render 'icon', icon: 'star' %} 404 {% render 'icon', icon: 'star' %}</p>
-      {% render 'swag-signature', class: 'empty-state__signature', animate: true %}
-      <h1 class="h2">{{ 'templates.404.title' | t }}</h1>
-      <p>{{ 'templates.404.subtext' | t }}</p>
-      <a href="{{ routes.all_products_collection_url }}" class="button">
-        {{ 'general.continue_shopping' | t }}
-        {% render 'icon', icon: 'arrow' %}
-      </a>
+    <div class="empty-state empty-state--large pattern pattern--bold">
+      <div class="panel empty-state__panel">
+        <p class="eyebrow">{% render 'icon', icon: 'blob' %} 404 {% render 'icon', icon: 'blob' %}</p>
+        {% render 'swag-wordmark', class: 'empty-state__wordmark', animate: true %}
+        <h1 class="h2">{{ 'templates.404.title' | t }}</h1>
+        <p>{{ 'templates.404.subtext' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">
+          {{ 'general.continue_shopping' | t }}
+          {% render 'icon', icon: 'arrow' %}
+        </a>
+      </div>
     </div>
   </div>
 </section>

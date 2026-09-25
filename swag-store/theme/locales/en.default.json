@@ -40,7 +40,7 @@
   "newsletter": {
     "label": "Email",
     "button_label": "Sign up",
-    "success": "You're on the list. Welcome to the constellation."
+    "success": "You're on the list. Welcome to the crew."
   },
   "products": {
     "product": {
@@ -117,12 +117,12 @@
       "empty": "No pieces match these filters."
     },
     "image_with_text": {
-      "signed": "Signed,"
+      "signed": "Made by"
     }
   },
   "templates": {
     "404": {
-      "title": "Lost among the stars",
+      "title": "Lost in the pattern",
       "subtext": "The page you're looking for doesn't exist, or it sold out."
     },
     "contact": {

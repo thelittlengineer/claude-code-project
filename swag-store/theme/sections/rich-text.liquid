@@ -5,14 +5,14 @@
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'eyebrow' -%}
-          <p class="eyebrow" {{ block.shopify_attributes }}>{% render 'icon', icon: 'star' %} {{ block.settings.text | escape }}</p>
+          <p class="eyebrow" {{ block.shopify_attributes }}>{% render 'icon', icon: 'blob' %} {{ block.settings.text | escape }}</p>
         {%- when 'heading' -%}
           <h2 class="h2" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
         {%- when 'text' -%}
           <div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
-        {%- when 'signature' -%}
-          <div class="rich-text__signature" {{ block.shopify_attributes }}>
-            {% render 'swag-signature', animate: true %}
+        {%- when 'wordmark' -%}
+          <div class="rich-text__wordmark" {{ block.shopify_attributes }}>
+            {% render 'swag-wordmark', animate: true %}
           </div>
         {%- when 'button' -%}
           <a href="{{ block.settings.link | default: routes.all_products_collection_url }}" class="button" {{ block.shopify_attributes }}>
@@ -44,10 +44,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "grey"
+      "default": "dark"
     }
   ],
   "blocks": [
@@ -78,8 +78,8 @@
       ]
     },
     {
-      "type": "signature",
-      "name": "Signature",
+      "type": "wordmark",
+      "name": "Wordmark",
       "limit": 1
     },
     {

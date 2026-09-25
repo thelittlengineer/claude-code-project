@@ -11,7 +11,7 @@
           <span class="menu-drawer__open">{% render 'icon', icon: 'menu' %}</span>
           <span class="menu-drawer__close">{% render 'icon', icon: 'close' %}</span>
         </summary>
-        <div class="menu-drawer__panel scheme-{{ scheme }} stars">
+        <div class="menu-drawer__panel scheme-{{ scheme }} pattern">
           <nav class="menu-drawer__nav" aria-label="{{ 'sections.header.menu' | t }}">
             <ul class="menu-drawer__list" role="list">
               {%- for link in menu.links -%}
@@ -82,7 +82,7 @@
             | image_tag: class: 'header__logo-image', alt: shop.name, width: settings.logo_width, loading: 'eager'
           }}
         {%- else -%}
-          {% render 'swag-signature', class: 'header__signature' %}
+          {% render 'swag-wordmark', class: 'header__wordmark' %}
         {%- endif -%}
       </a>
     {%- if request.page_type == 'index' -%}</h1>{%- else -%}</div>{%- endif -%}
@@ -156,10 +156,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "grey"
+      "default": "dark"
     },
     {
       "type": "checkbox",

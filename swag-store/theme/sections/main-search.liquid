@@ -1,7 +1,7 @@
 <section class="section section--tight">
   <div class="page-width">
     <div class="search-page__header">
-      <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ 'general.search.search' | t }}</p>
+      <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ 'general.search.search' | t }}</p>
       <h1 class="h1">
         {%- if search.performed -%}
           {{ 'general.search.results_for' | t: terms: search.terms }}
@@ -30,7 +30,7 @@
       {%- paginate search.results by 24 -%}
         {%- if search.results_count == 0 -%}
           <div class="empty-state">
-            {% render 'swag-signature', class: 'empty-state__signature' %}
+            {% render 'swag-wordmark', class: 'empty-state__wordmark' %}
             <p class="h3">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
           </div>
         {%- else -%}

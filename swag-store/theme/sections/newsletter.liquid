@@ -2,10 +2,10 @@
 
 <section class="section">
   <div class="page-width">
-    <div class="newsletter scheme-{{ s.color_scheme }} stars stars--bold stars--clear">
-      <div class="newsletter__inner">
+    <div class="newsletter scheme-{{ s.color_scheme }} pattern pattern--bold">
+      <div class="newsletter__inner panel scheme-dark">
         {%- if s.eyebrow != blank -%}
-          <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ s.eyebrow | escape }} {% render 'icon', icon: 'star' %}</p>
+          <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ s.eyebrow | escape }} {% render 'icon', icon: 'blob' %}</p>
         {%- endif -%}
         {%- if s.heading != blank -%}
           <h2 class="h2">{{ s.heading | escape }}</h2>
@@ -38,7 +38,7 @@
           {%- if form.errors -%}
             <p id="NewsletterForm-error" class="form-message form-message--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
           {%- elsif form.posted_successfully? -%}
-            <p class="form-message form-message--success" tabindex="-1" autofocus>{% render 'icon', icon: 'star' %} {{ 'newsletter.success' | t }}</p>
+            <p class="form-message form-message--success" tabindex="-1" autofocus>{% render 'icon', icon: 'blob' %} {{ 'newsletter.success' | t }}</p>
           {%- endif -%}
         {%- endform -%}
       </div>
@@ -61,7 +61,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Join the constellation"
+      "default": "Join the crew"
     },
     {
       "type": "richtext",
@@ -74,10 +74,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "ink"
+      "default": "lime"
     }
   ],
   "presets": [

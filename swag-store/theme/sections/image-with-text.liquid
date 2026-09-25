@@ -3,7 +3,7 @@
 <section class="section scheme-{{ s.color_scheme }}">
   <div class="page-width">
     <div class="image-with-text image-with-text--{{ s.image_position }}">
-      <div class="image-with-text__media ratio ratio--portrait stars stars--bold">
+      <div class="image-with-text__media ratio ratio--portrait pattern pattern--bold">
         {%- if s.image != blank -%}
           {{
             s.image
@@ -22,7 +22,7 @@
 
       <div class="image-with-text__content">
         {%- if s.eyebrow != blank -%}
-          <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ s.eyebrow | escape }}</p>
+          <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ s.eyebrow | escape }}</p>
         {%- endif -%}
         {%- if s.heading != blank -%}
           <h2 class="h2">{{ s.heading | escape }}</h2>
@@ -33,7 +33,7 @@
         {%- if s.show_signoff -%}
           <div class="signoff">
             <span class="signoff__label">{{ 'sections.image_with_text.signed' | t }}</span>
-            {% render 'swag-signature', class: 'signoff__signature', animate: true %}
+            {% render 'swag-wordmark', class: 'signoff__wordmark', animate: true %}
           </div>
         {%- endif -%}
         {%- if s.button_label != blank -%}
@@ -77,18 +77,18 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Every piece, signed"
+      "default": "Every piece, patterned"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>SWAG started as a signature scrawled across a sky full of stars. Every piece carries that mark — heavyweight cotton, relaxed cuts, and runs small enough that you won't see yourself coming down the street.</p>"
+      "default": "<p>SWAG started as a doodle in the margins: loops inside loops, lime on black. Every piece carries that pattern — heavyweight cotton, relaxed cuts, and runs small enough that you won't see yourself coming down the street.</p>"
     },
     {
       "type": "checkbox",
       "id": "show_signoff",
-      "label": "Sign off with the signature",
+      "label": "Sign off with the wordmark",
       "default": true
     },
     {
@@ -107,10 +107,10 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "grey"
+      "default": "dark"
     }
   ],
   "presets": [

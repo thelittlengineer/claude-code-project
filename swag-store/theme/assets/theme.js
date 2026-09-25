@@ -41,26 +41,26 @@
     });
   };
 
-  /* ---------- Signature: write it on when it scrolls into view ---------- */
+  /* ---------- Wordmark: reveal it when it scrolls into view ---------- */
 
-  const signatureObserver =
+  const wordmarkObserver =
     'IntersectionObserver' in window
       ? new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (!entry.isIntersecting) return;
               entry.target.classList.add('is-signed');
-              signatureObserver.unobserve(entry.target);
+              wordmarkObserver.unobserve(entry.target);
             });
           },
           { threshold: 0.35 }
         )
       : null;
 
-  const watchSignatures = (root = document) => {
-    root.querySelectorAll('.signature--animate:not(.is-signed)').forEach((signature) => {
-      if (signatureObserver) signatureObserver.observe(signature);
-      else signature.classList.add('is-signed');
+  const watchWordmarks = (root = document) => {
+    root.querySelectorAll('.wordmark--animate:not(.is-signed)').forEach((wordmark) => {
+      if (wordmarkObserver) wordmarkObserver.observe(wordmark);
+      else wordmark.classList.add('is-signed');
     });
   };
 
@@ -350,7 +350,7 @@
       const container = this.info && this.info.querySelector('[data-price-container]');
       if (!container) return;
       const price = container.querySelector('[data-price]');
-      const badge = container.querySelector('.star-badge');
+      const badge = container.querySelector('.blob-badge');
       const onSale = variant.compare_at_price && variant.compare_at_price > variant.price;
       const strings = theme.strings;
 
@@ -473,10 +473,10 @@
 
   /* ---------- Boot ---------- */
 
-  watchSignatures();
+  watchWordmarks();
 
   document.addEventListener('shopify:section:load', (event) => {
-    watchSignatures(event.target);
+    watchWordmarks(event.target);
     syncHeaderHeight();
   });
 })();

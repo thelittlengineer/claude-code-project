@@ -1,0 +1,11 @@
+{%- comment -%}
+  An organic blob badge, cut from the lime-and-black pattern on the brand card.
+
+  Accepts:
+  - text {String}: badge label
+  - class {String}: extra classes
+{%- endcomment -%}
+<span class="blob-badge{% if class != blank %} {{ class }}{% endif %}">
+  <svg viewBox="0 0 100 86" aria-hidden="true" focusable="false"><path d="M18 9C33-2 62-1 80 8c16 8 22 26 16 44-6 19-25 32-47 33C27 86 8 74 3 55-2 38 4 19 18 9Z"/></svg>
+  <span class="blob-badge__text">{{ text }}</span>
+</span>

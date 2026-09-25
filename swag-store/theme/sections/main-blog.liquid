@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">{% render 'icon', icon: 'star' %} {{ 'blogs.eyebrow' | t }}</p>
+        <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ 'blogs.eyebrow' | t }}</p>
         <h1 class="h1">{{ blog.title | escape }}</h1>
       </div>
     </div>
@@ -12,7 +12,7 @@
         {%- for article in blog.articles -%}
           <li>
             <a href="{{ article.url }}" class="article-card">
-              <div class="article-card__media ratio ratio--landscape stars stars--bold">
+              <div class="article-card__media ratio ratio--landscape pattern pattern--bold">
                 {%- if article.image -%}
                   {{
                     article.image

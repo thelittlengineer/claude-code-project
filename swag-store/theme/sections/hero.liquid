@@ -1,19 +1,10 @@
-{%- liquid
-  assign s = section.settings
-  assign has_image = false
-  if s.image != blank
-    assign has_image = true
-  endif
--%}
+{%- assign s = section.settings -%}
 
-<section class="hero hero--{{ s.layout }} hero--{{ s.height }}{% if section.index == 1 %} hero--first{% endif %}">
+<section class="hero hero--{{ s.layout }} hero--{{ s.height }}">
   <div class="{% if s.layout == 'card' %}page-width{% endif %}">
-    <div
-      class="hero__card scheme-{{ s.color_scheme }}{% if s.show_stars %} stars stars--bold{% endif %}{% if has_image %} hero__card--image{% endif %}"
-      style="--overlay: {{ s.image_overlay | divided_by: 100.0 }}; --signature-width: {{ s.signature_width }}%;"
-    >
-      {%- if has_image -%}
-        <div class="hero__media">
+    <div class="hero__card scheme-{{ s.color_scheme }}" style="--wordmark-width: {{ s.wordmark_width }}%;">
+      <div class="hero__pattern">
+        {%- if s.image != blank -%}
           {%- liquid
             if section.index == 1
               assign loading = 'eager'
@@ -31,22 +22,20 @@
               widths: '750, 1100, 1500, 1800, 2400',
               alt: s.image.alt
           }}
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      </div>
 
-      <div class="hero__content">
+      <div class="hero__band">
         {%- if s.eyebrow != blank -%}
           <p class="eyebrow hero__eyebrow">
-            {% render 'icon', icon: 'star' %}
+            {% render 'icon', icon: 'blob' %}
             {{ s.eyebrow | escape }}
-            {% render 'icon', icon: 'star' %}
+            {% render 'icon', icon: 'blob' %}
           </p>
         {%- endif -%}
 
-        {%- if s.show_signature -%}
-          <div class="hero__signature-wrap">
-            {% render 'swag-signature', class: 'hero__signature', animate: s.animate_signature %}
-          </div>
+        {%- if s.show_wordmark -%}
+          {% render 'swag-wordmark', class: 'hero__wordmark', animate: s.animate_wordmark %}
         {%- endif -%}
 
         {%- if s.heading != blank -%}
@@ -79,9 +68,13 @@
 
 {% schema %}
 {
-  "name": "Star hero",
+  "name": "Pattern hero",
   "class": "section-hero",
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "Laid out like the brand card: the lime pattern on top, the wordmark on the band below."
+    },
     {
       "type": "select",
       "id": "layout",
@@ -95,76 +88,55 @@
     {
       "type": "select",
       "id": "height",
-      "label": "Height",
+      "label": "Pattern height",
       "options": [
         { "value": "small", "label": "Small" },
         { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" },
-        { "value": "screen", "label": "Fill screen" }
+        { "value": "large", "label": "Large" }
       ],
       "default": "large"
     },
     {
       "type": "select",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "Band color scheme",
       "options": [
-        { "value": "grey", "label": "Star grey" },
-        { "value": "ink", "label": "Ink" }
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
       ],
-      "default": "grey"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_stars",
-      "label": "Show stars",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Signature"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_signature",
-      "label": "Show SWAG signature",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "animate_signature",
-      "label": "Write the signature on page load",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "signature_width",
-      "min": 30,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Signature width",
-      "default": 75
-    },
-    {
-      "type": "header",
-      "content": "Background image"
+      "default": "dark"
     },
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image",
-      "info": "Optional. A lookbook shot works well; the grey is laid over it so the signature stays readable."
+      "info": "Optional. Replaces the pattern with a lookbook shot."
+    },
+    {
+      "type": "header",
+      "content": "Wordmark"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wordmark",
+      "label": "Show swag wordmark",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "animate_wordmark",
+      "label": "Reveal the wordmark on page load",
+      "default": true
     },
     {
       "type": "range",
-      "id": "image_overlay",
-      "min": 0,
-      "max": 90,
+      "id": "wordmark_width",
+      "min": 20,
+      "max": 80,
       "step": 5,
       "unit": "%",
-      "label": "Overlay opacity",
-      "default": 35
+      "label": "Wordmark width",
+      "default": 40
     },
     {
       "type": "header",
@@ -180,13 +152,13 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Written in the stars"
+      "default": "Loud by nature"
     },
     {
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>Streetwear signed by hand. Heavyweight tees, hoodies and caps — made in small runs.</p>"
+      "default": "<p>Acid-lime streetwear with a pattern you won't miss. Heavyweight tees, hoodies and caps — made in small runs.</p>"
     },
     {
       "type": "text",
@@ -213,7 +185,7 @@
   ],
   "presets": [
     {
-      "name": "Star hero"
+      "name": "Pattern hero"
     }
   ]
 }

@@ -23,11 +23,11 @@
 
   <body class="template-gift-card">
     <main class="gift-card">
-      <div class="gift-card__card stars stars--bold">
+      <div class="gift-card__card pattern">
         {%- if settings.logo != blank -%}
           {{ settings.logo | image_url: width: 400 | image_tag: class: 'gift-card__logo', alt: shop.name }}
         {%- else -%}
-          {% render 'swag-signature', class: 'gift-card__signature' %}
+          {% render 'swag-wordmark', class: 'gift-card__wordmark' %}
         {%- endif -%}
         <p class="gift-card__balance h1">
           {%- if settings.currency_code_enabled -%}
