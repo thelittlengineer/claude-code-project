@@ -59,7 +59,7 @@ function makeProduct({ handle, title, price, compareAt = null, images, type, sol
       : [{ name: 'Size', position: 1, values: sizes, selected_value: firstAvailable.title }],
     description:
       description ||
-      '<p>Heavyweight 280gsm cotton, garment-dyed and pre-shrunk. The swag wordmark is screen-printed by hand in acid lime.</p>',
+      '<p>Heavyweight 280gsm cotton, garment-dyed and pre-shrunk. The SWAG signature is screen-printed by hand in lilac.</p>',
   };
 }
 
@@ -74,14 +74,14 @@ export const products = [
   }),
   makeProduct({
     handle: 'starfield-hoodie',
-    title: 'Pattern Hoodie',
+    title: 'Signature Hoodie',
     price: 9500,
     compareAt: 12000,
     images: ['hoodie-front', 'hoodie-back'],
     type: 'Hoodies',
     soldOutSizes: ['XS', 'XXL'],
     description:
-      '<p>Brushed-back 420gsm fleece with a double-lined hood. Wordmark across the chest, the full loop pattern across the back.</p><p>Boxy fit, dropped shoulders, ribbed cuffs and hem.</p>',
+      '<p>Brushed-back 420gsm fleece with a double-lined hood. Signature across the chest, a big purple print across the back.</p><p>Boxy fit, dropped shoulders, ribbed cuffs and hem.</p>',
   }),
   makeProduct({
     handle: 'signature-tee-stone',
@@ -92,7 +92,7 @@ export const products = [
   }),
   makeProduct({
     handle: 'signed-dad-cap',
-    title: 'Lime Dad Cap',
+    title: 'Lilac Dad Cap',
     price: 3800,
     images: ['cap-front', 'cap-black'],
     type: 'Accessories',
@@ -100,14 +100,14 @@ export const products = [
   }),
   makeProduct({
     handle: 'constellation-crewneck',
-    title: 'Acid Crewneck',
+    title: 'Lilac Crewneck',
     price: 8500,
     images: ['crewneck-front', 'crewneck-back'],
     type: 'Hoodies',
   }),
   makeProduct({
     handle: 'night-sky-sweatpants',
-    title: 'Loop Sweatpants',
+    title: 'Signed Sweatpants',
     price: 8000,
     compareAt: 9500,
     images: ['pants-front'],
@@ -115,14 +115,14 @@ export const products = [
   }),
   makeProduct({
     handle: 'ink-longsleeve',
-    title: 'Olive Longsleeve',
+    title: 'Indigo Longsleeve',
     price: 5500,
     images: ['longsleeve-front', 'longsleeve-back'],
     type: 'Tees',
   }),
   makeProduct({
     handle: 'star-tote',
-    title: 'Pattern Tote',
+    title: 'Signature Tote',
     price: 3000,
     images: ['tote-front'],
     type: 'Accessories',

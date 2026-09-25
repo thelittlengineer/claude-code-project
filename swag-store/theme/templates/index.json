@@ -8,10 +8,10 @@
         "color_scheme": "dark",
         "show_wordmark": true,
         "animate_wordmark": true,
-        "wordmark_width": 40,
+        "wordmark_width": 48,
         "eyebrow": "New season",
-        "heading": "Loud by nature",
-        "text": "<p>Acid-lime streetwear with a pattern you won't miss. Heavyweight tees, hoodies and caps — made in small runs.</p>",
+        "heading": "Signed, never stamped",
+        "text": "<p>Streetwear with a signature. Heavyweight tees, hoodies and caps — made in small runs.</p>",
         "button_label": "Shop the drop",
         "button_link": "shopify://collections/all",
         "button_label_2": "Lookbook",
@@ -31,7 +31,7 @@
         "text-2": {
           "type": "text",
           "settings": {
-            "text": "Loops on loops",
+            "text": "Signed by hand",
             "link": ""
           }
         },
@@ -125,8 +125,8 @@
       "settings": {
         "image_position": "left",
         "eyebrow": "The story",
-        "heading": "Every piece, patterned",
-        "text": "<p>SWAG started as a doodle in the margins: loops inside loops, lime on black. Every piece carries that pattern — heavyweight cotton, relaxed cuts, and runs small enough that you won't see yourself coming down the street.</p>",
+        "heading": "Every piece, signed",
+        "text": "<p>SWAG started as a name signed on a napkin. Every piece carries that signature — heavyweight cotton, relaxed cuts, and runs small enough that you won't see yourself coming down the street.</p>",
         "show_signoff": true,
         "button_label": "About us",
         "button_link": "",

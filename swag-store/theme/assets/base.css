@@ -1,6 +1,6 @@
 /*
- * SWAG — Shopify theme built from the green brand card.
- * Acid lime and black organic pattern, a blue-black band, and a rounded "swag" script in olive.
+ * SWAG — Shopify theme built from the purple signature logo.
+ * A charcoal ground, and a handwritten "SWAG" in a pen line fading from lilac to indigo.
  */
 
 /* ---------- Tokens ---------- */
@@ -25,12 +25,12 @@
   --line: color-mix(in srgb, var(--color-text) 18%, transparent);
   --btn-bg: var(--color-accent);
   --btn-fg: var(--color-black);
-  --wordmark-start: #b3c95a;
-  --wordmark-middle: #8fa24a;
-  --wordmark-end: #4e5b1e;
+  --wordmark-start: #b4a0ce;
+  --wordmark-middle: #837aba;
+  --wordmark-end: #4c4aa2;
 }
 
-.scheme-lime {
+.scheme-lilac {
   --bg: var(--color-accent);
   --fg: var(--color-black);
   --accent: var(--color-black);
@@ -46,7 +46,7 @@
 }
 
 .scheme-dark,
-.scheme-lime {
+.scheme-lilac {
   background: var(--bg);
   color: var(--fg);
 }
@@ -378,7 +378,7 @@ h4,
 /* ---------- Wordmark ---------- */
 
 .wordmark {
-  --write-duration: 2.4s;
+  --write-duration: 2.6s;
   display: block;
   width: 100%;
   height: auto;
@@ -398,27 +398,18 @@ h4,
 }
 
 /*
- * Handwriting: a masked copy of the letters is drawn in by pen strokes that run down the centre of
- * each letter, one after another (--d is when a stroke starts, --t how long it takes). The full
- * letters then fade in underneath to fill the tips and blobs the pen skipped.
+ * Handwriting: each pen stroke is drawn on after the one before it (--d is when a stroke starts,
+ * --t how long it takes, both as fractions of the whole signature).
  */
-.js .wordmark--animate .wordmark__letters {
-  opacity: 0;
-}
-
-.js .wordmark--animate .wordmark__pen {
+.js .wordmark--animate .wordmark__pen path {
   stroke-dasharray: 1 2;
   stroke-dashoffset: 1;
   opacity: 0;
 }
 
-.js .wordmark--animate.is-signed .wordmark__pen {
-  animation: pen-write calc(var(--t) * var(--write-duration)) cubic-bezier(0.45, 0.05, 0.4, 1)
+.js .wordmark--animate.is-signed .wordmark__pen path {
+  animation: pen-write calc(var(--t) * var(--write-duration)) cubic-bezier(0.45, 0, 0.35, 1)
     calc(var(--d) * var(--write-duration) + 0.2s) both;
-}
-
-.js .wordmark--animate.is-signed .wordmark__letters {
-  animation: ink-settle 0.5s ease calc(var(--write-duration) + 0.1s) forwards;
 }
 
 @keyframes pen-write {
@@ -435,17 +426,9 @@ h4,
   }
 }
 
-@keyframes ink-settle {
-  to {
-    opacity: 1;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .js .wordmark--animate .wordmark__letters,
-  .js .wordmark--animate .wordmark__pen,
-  .js .wordmark--animate.is-signed .wordmark__letters,
-  .js .wordmark--animate.is-signed .wordmark__pen {
+  .js .wordmark--animate .wordmark__pen path,
+  .js .wordmark--animate.is-signed .wordmark__pen path {
     animation: none;
     stroke-dasharray: none;
     stroke-dashoffset: 0;

@@ -1,6 +1,6 @@
 # SWAG — Shopify theme
 
-A Shopify (Online Store 2.0) theme for a clothing brand, designed from the green **SWAG** logo card: an acid-lime and black organic pattern, a blue-black band, and a rounded "swag" script fading from light to dark olive.
+A Shopify (Online Store 2.0) theme for a clothing brand, designed from the purple **SWAG** signature logo: a charcoal ground and a handwritten pen line fading from lilac to indigo.
 
 ![Home page](docs/home-desktop.png)
 
@@ -12,15 +12,12 @@ A Shopify (Online Store 2.0) theme for a clothing brand, designed from the green
 
 | Logo detail | Where it shows up in the theme |
 | --- | --- |
-| The lime-and-black loop pattern | Traced from the card into smooth curves in `assets/pattern.svg`, so it stays sharp even on 4K screens: the top of the hero, the newsletter card, the collection banner, the password page, and a faint layer in the footer |
-| Blue-black band, `#00070F` | Page background and the "Dark" color scheme (`Theme settings → Colors`) |
-| Acid lime, `#BAD406` | Buttons, highlights, the announcement ticker, the scrolling strip and the "Lime" color scheme |
-| The rounded "swag" script | Traced into `assets/swag-wordmark.svg`: header logo, hero, footer, sign-offs and empty states. It carries the logo's olive gradient on dark and turns black on lime, and writes itself on letter by letter, like handwriting, as it scrolls into view |
-| Card layout: pattern on top, band below | The home page hero is the logo card at page scale, with a short pattern strip so the wordmark sits in the first screen |
+| The handwritten "SWAG" signature | Traced along the centre of the pen line into smooth curves (crisp even on 4K screens): header logo, hero, footer, sign-offs and empty states. It writes itself on stroke by stroke, like handwriting, as it scrolls into view |
+| The pen's lilac-to-indigo fade, `#B4A0CE` → `#4C4AA2` | The signature's gradient, and the brand art (`assets/pattern.svg`): a purple field with oversized signature loops, used in the hero strip, newsletter card, collection banner and password page |
+| Charcoal ground, `#28272D` | Page background and the "Dark" color scheme (`Theme settings → Colors`) |
+| Lilac, `#A898DA` | Buttons, highlights, the announcement ticker, sale badges and the "Lilac" color scheme |
 
-Everything else stays quiet: product shots sit on a light neutral backdrop, lime is kept for accents (buttons, the dot before section labels, **Sale** badges, the scrolling strip's separators), and headings are set in sentence case.
-
-Typography pairs the wordmark with bold uppercase **Inter** headings and **Anonymous Pro** mono labels and prices. All three fonts can be changed in the theme editor.
+Everything else stays quiet: product shots sit on a light lavender-grey backdrop, lilac is kept for accents, and headings are set in sentence case.
 
 ## What's included
 
@@ -74,7 +71,7 @@ The renderer (`render.mjs`) covers only the parts of Shopify Liquid this theme u
 
 ## Brand assets
 
-`tools/build_brand_assets.py` rebuilds the pattern and the wordmark from `reference/swag-logo-green.png`, the green logo card cropped from the original image. It traces both into cubic Bézier curves (so they stay crisp at any size), and writes `snippets/swag-wordmark.liquid`: the letters as inline SVG plus pen strokes along the centre of each letter, which draw the word on stroke by stroke.
+`tools/build_brand_assets.py` rebuilds the signature and brand art from `reference/swag-logo-purple.png`. It traces the centre of the pen line into cubic Bézier strokes and writes `snippets/swag-wordmark.liquid` (the signature as inline SVG, with per-stroke timing for the write-on animation), `assets/swag-wordmark.svg`, and `assets/pattern.svg`.
 
 ```sh
 pip install pillow numpy scipy scikit-image
@@ -88,6 +85,6 @@ swag-store/
 ├── theme/        # the Shopify theme (upload this)
 ├── preview/      # local renderer, sample data and product mock-ups
 ├── tools/        # brand asset generator
-├── reference/    # the green SWAG logo card the design is based on
+├── reference/    # the SWAG logos; the purple signature is the current design
 └── docs/         # screenshots
 ```

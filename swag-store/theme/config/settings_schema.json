@@ -12,7 +12,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Leave the logo empty to use the built-in \"swag\" wordmark, traced from the green brand card."
+        "content": "Leave the logo empty to use the built-in handwritten SWAG signature."
       },
       {
         "type": "image_picker",
@@ -44,34 +44,34 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "info": "The blue-black band from the logo card.",
-        "default": "#00070F"
+        "info": "The charcoal ground from the logo.",
+        "default": "#28272D"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#EEF3DA"
+        "default": "#EEEBF5"
       },
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Lime",
-        "info": "Buttons, highlights and the Lime color scheme.",
-        "default": "#BAD406"
+        "label": "Lilac",
+        "info": "Buttons, highlights and the Lilac color scheme.",
+        "default": "#A898DA"
       },
       {
         "type": "color",
         "id": "color_black",
-        "label": "Pattern black",
-        "info": "Text on lime.",
-        "default": "#000000"
+        "label": "Ink",
+        "info": "Text on lilac.",
+        "default": "#17161C"
       },
       {
         "type": "color",
         "id": "color_card",
         "label": "Product image background",
-        "default": "#E8E9E2"
+        "default": "#ECEAF2"
       }
     ]
   },
@@ -106,12 +106,12 @@
     ]
   },
   {
-    "name": "Pattern",
+    "name": "Brand art",
     "settings": [
       {
         "type": "select",
         "id": "pattern_page",
-        "label": "Faint pattern behind the page",
+        "label": "Faint brand art behind the page",
         "options": [
           {
             "value": "none",

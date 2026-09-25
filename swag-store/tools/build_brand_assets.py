@@ -1,13 +1,14 @@
 """
-Rebuilds the SWAG brand assets from the green logo card (reference/swag-logo-green.png):
+Rebuilds the SWAG brand assets from the purple signature logo (reference/swag-logo-purple.png):
 
-  * theme/assets/pattern.svg            - the lime-and-black organic pattern, traced into smooth curves
-  * theme/assets/swag-wordmark.svg      - the rounded "swag" script, traced into smooth curves
-  * theme/snippets/swag-wordmark.liquid - the wordmark as inline SVG, with pen strokes along the
-                                          centre of each letter so it can be written on stroke by stroke
+  * theme/snippets/swag-wordmark.liquid - the handwritten "SWAG" signature as inline SVG pen strokes,
+                                          in the logo's lilac-to-indigo gradient, drawn on stroke by stroke
+  * theme/assets/swag-wordmark.svg      - the same strokes as a standalone SVG (used by the preview mock-ups)
+  * theme/assets/pattern.svg            - brand art for the hero strip and panels: the purple gradient
+                                          with oversized signature loops drifting across it
 
-Everything is traced into cubic Bezier curves (not polygons), so edges stay crisp at any size,
-from a phone to a 4K screen.
+The signature is traced along the centre of the pen line and smoothed into cubic Bezier curves,
+so it stays crisp at any size, including 4K screens.
 
     pip install pillow numpy scipy scikit-image
     python3 tools/build_brand_assets.py
@@ -21,7 +22,10 @@ from skimage import measure, morphology
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THEME = os.path.join(ROOT, 'theme')
-card = np.asarray(Image.open(os.path.join(ROOT, 'reference', 'swag-logo-green.png')).convert('RGB')).astype(float)
+logo = np.asarray(Image.open(os.path.join(ROOT, 'reference', 'swag-logo-purple.png')).convert('RGB')).astype(float)
+
+# Colours sampled from the logo: charcoal ground, pen fading lilac -> periwinkle -> indigo left to right.
+GRADIENT = ['#B4A0CE', '#837ABA', '#4C4AA2']
 
 
 def fmt(value):
@@ -58,51 +62,14 @@ def bezier(points, closed):
     return d + ('Z' if closed else '')
 
 
-def trace(coverage, scale, blur, k, tolerance, min_len=16):
-    """Outline a 0..1 coverage map as smooth closed curves (even-odd keeps holes open)."""
-    big = ndimage.zoom(ndimage.gaussian_filter(coverage, blur), scale, order=3)
-    parts = []
-    for contour in measure.find_contours(np.pad(big, 1), 0.5):
-        if len(contour) < min_len:
-            continue
-        pts = (contour[:, ::-1] - 1) / scale  # (x, y) in source pixels
-        if np.allclose(pts[0], pts[-1]):
-            pts = pts[:-1]
-        pts = smooth(pts, k, closed=True)
-        pts = measure.approximate_polygon(np.vstack([pts, pts[:1]]), tolerance)[:-1]
-        if len(pts) >= 3:
-            parts.append(bezier(pts, closed=True))
-    return ''.join(parts)
-
-
-# ---------- pattern: black strokes over lime, from the top of the card ----------
-x0, y0, x1, y1 = 14, 12, 898, 440
-top = card[y0:y1, x0:x1]
-ink = np.clip((120 - top.mean(axis=2)) / 90, 0, 1)
-ink[top[..., 2] > 150] = 0  # light corner pixels count as lime
-pattern_d = trace(ink, 4, 1.1, 9, 0.3)
-pw, ph = x1 - x0, y1 - y0
-pattern = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="xMidYMid slice">'
-           '<rect width="%d" height="%d" fill="#BAD406"/><path fill="#000" fill-rule="evenodd" d="%s"/></svg>'
-           % (pw, ph, pw, ph, pattern_d))
-open(os.path.join(THEME, 'assets', 'pattern.svg'), 'w').write(pattern)
-
-# ---------- wordmark: green letters on the dark band ----------
-x0, y0, x1, y1 = 266, 511, 646, 640
-band = card[y0:y1, x0:x1]
-g, b = band[..., 1], band[..., 2]
-tone = np.linspace(190, 88, band.shape[1])[None, :]  # letters fade light -> dark olive, left to right
-letters = np.clip((g - 8) / (tone - 8), 0, 1)
-letters[(g - b) < 8] = 0
-letters_d = trace(letters, 4, 0.9, 4, 0.18)
-ww, wh = x1 - x0, y1 - y0
-wordmark = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d"><path fill-rule="evenodd" d="%s"/></svg>'
-            % (ww, wh, letters_d))
-open(os.path.join(THEME, 'assets', 'swag-wordmark.svg'), 'w').write(wordmark)
-
-# ---------- pen strokes: the centre line of each letter, in writing order ----------
+# ---------- trace the pen line ----------
+x0, y0, x1, y1 = 22, 80, 366, 188
+crop = logo[y0:y1, x0:x1]
+ink = np.clip((crop.mean(axis=2) - 40) / 80, 0, 1)
 S = 4
-solid = ndimage.zoom(ndimage.gaussian_filter(letters, 0.9), S, order=3) > 0.5
+solid = ndimage.zoom(ndimage.gaussian_filter(ink, 0.7), S, order=3) > 0.5
+labels = measure.label(solid)
+solid = np.isin(labels, [r.label for r in measure.regionprops(labels) if r.area > 40 * S * S])  # drop JPEG specks
 skeleton = morphology.skeletonize(solid)
 H, W = skeleton.shape
 OFFSETS = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
@@ -149,59 +116,59 @@ def edges_of(pixels):
 
 
 pixels = set(zip(*np.nonzero(skeleton)))
-for _ in range(4):  # prune short spurs left by bumps on the letter outlines
+for _ in range(5):  # prune short spurs left by bumps along the pen line
     degree, edges = edges_of(pixels)
     removed = False
     for edge in edges:
         ends = [p for p in (edge[0], edge[-1]) if degree.get(p) == 1]
         joints = [p for p in (edge[0], edge[-1]) if degree.get(p, 0) >= 3]
-        if ends and joints and len(edge) < 14 * S:
+        if ends and joints and len(edge) < 5 * S:
             pixels -= set(edge) - set(joints)
             removed = True
     if not removed:
         break
 degree, edges = edges_of(pixels)
-edges = [e for e in edges if len(e) > 3 * S]
+edges = [e for e in edges if len(e) > 2 * S]
 
-# A pen about as wide as the letters' strokes. Blobs and tips it misses fade in as the writing finishes.
-line = np.zeros_like(skeleton)
-for y, x in pixels:
-    line[y, x] = True
-thickness = ndimage.distance_transform_edt(solid)[line]
-pen_width = (2 * np.percentile(thickness, 85) + 2 * S) / S  # in viewBox units
+thickness = ndimage.distance_transform_edt(solid)[skeleton]
+pen_width = 2 * np.median(thickness) / S * 1.05  # in viewBox units
 
-pens = []
 edges.sort(key=lambda e: min(x for _, x in e))
-lengths = []
+strokes, lengths = [], []
 for edge in edges:
     if edge[0][1] > edge[-1][1]:
         edge = edge[::-1]  # write each stroke left to right
     pts = np.array([(x / S, y / S) for y, x in edge], float)
-    pts = smooth(pts, 3, closed=False)
-    pts = measure.approximate_polygon(pts, 0.25)
+    pts = smooth(pts, 4, closed=False)
+    pts = measure.approximate_polygon(pts, 0.12)
+    if len(pts) < 2:
+        continue
     lengths.append(np.hypot(*np.diff(pts, axis=0).T).sum())
-    pens.append(pts)
+    strokes.append(bezier(pts, closed=False))
 total = sum(lengths)
+ww, wh = x1 - x0, y1 - y0
+
 start = 0.0
 pen_paths = []
-for pts, length in zip(pens, lengths):
-    # --d: when this stroke starts, --t: how long it takes, both as fractions of the whole write-on
-    pen_paths.append('        <path class="wordmark__pen" pathLength="1" style="--d:%.3f;--t:%.3f" d="%s"/>'
-                     % (start / total, max(length / total, 0.03), bezier(pts, closed=False)))
-    start += length * 0.9
+for d, length in zip(strokes, lengths):
+    # --d: when this stroke starts, --t: how long it takes, both as fractions of the whole signature
+    pen_paths.append('    <path pathLength="1" style="--d:%.3f;--t:%.3f" d="%s"/>' % (start / total, max(length / total, 0.02), d))
+    start += length * 0.92
+
+standalone = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" fill="none" stroke="#000" stroke-width="%s" '
+              'stroke-linecap="round" stroke-linejoin="round"><path d="%s"/></svg>' % (ww, wh, fmt(pen_width), ''.join(strokes)))
+open(os.path.join(THEME, 'assets', 'swag-wordmark.svg'), 'w').write(standalone)
 
 snippet = '''{%- comment -%}
-  The "swag" wordmark from the green brand card, as inline SVG. Generated by tools/build_brand_assets.py.
+  The handwritten "SWAG" signature, as inline SVG. Generated by tools/build_brand_assets.py.
 
-  The letters are one filled shape with the logo's olive gradient (black on the lime scheme). When
-  animated, the full letters start hidden and a masked copy is drawn in by pen strokes running down
-  the centre of each letter, one after another, so the word is written on like handwriting. The full
-  letters then fade in underneath to fill the tips and blobs the pen skipped.
+  Monoline pen strokes in the logo's lilac-to-indigo gradient (solid ink on the lilac scheme).
+  When animated, each stroke is drawn on after the one before it, so the signature writes itself.
 
   Accepts:
-  - id {String}: unique id for this instance (the section id works); keeps gradients and masks apart
+  - id {String}: unique id for this instance (the section id works); keeps gradients apart
   - class {String}: extra classes
-  - animate {Boolean}: write the wordmark on when it scrolls into view (respects reduced motion)
+  - animate {Boolean}: write the signature on when it scrolls into view (respects reduced motion)
   - label {String}: accessible name, defaults to the shop name
 {%- endcomment -%}
 {%- liquid
@@ -215,32 +182,44 @@ snippet = '''{%- comment -%}
   xmlns="http://www.w3.org/2000/svg"
 >
   <defs>
-    <linearGradient id="wordmark-fill-{{ uid }}" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="wordmark-ink-{{ uid }}" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="__W__" y2="0">
       <stop offset="0" class="wordmark__stop wordmark__stop--start"/>
-      <stop offset="0.48" class="wordmark__stop wordmark__stop--middle"/>
+      <stop offset="0.5" class="wordmark__stop wordmark__stop--middle"/>
       <stop offset="1" class="wordmark__stop wordmark__stop--end"/>
     </linearGradient>
-    {%- if animate %}
-    <mask id="wordmark-pen-{{ uid }}" maskUnits="userSpaceOnUse" x="-20" y="-20" width="__MW__" height="__MH__">
-      <g fill="none" stroke="#fff" stroke-width="__PEN__" stroke-linecap="round" stroke-linejoin="round">
-__PENS__
-      </g>
-    </mask>
-    {%- endif %}
   </defs>
-  <g class="wordmark__letters">
-    <path id="wordmark-letters-{{ uid }}" fill="url(#wordmark-fill-{{ uid }})" fill-rule="evenodd" d="__LETTERS__"/>
+  <g
+    class="wordmark__pen"
+    fill="none"
+    stroke="url(#wordmark-ink-{{ uid }})"
+    stroke-width="__PEN__"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+__PATHS__
   </g>
-  {%- if animate %}
-  <use class="wordmark__ink" href="#wordmark-letters-{{ uid }}" mask="url(#wordmark-pen-{{ uid }})"/>
-  {%- endif %}
 </svg>
 '''
 snippet = (snippet.replace('__W__', str(ww)).replace('__H__', str(wh))
-           .replace('__MW__', str(ww + 40)).replace('__MH__', str(wh + 40))
-           .replace('__PEN__', fmt(pen_width)).replace('__PENS__', '\n'.join(pen_paths))
-           .replace('__LETTERS__', letters_d))
+           .replace('__PEN__', fmt(pen_width)).replace('__PATHS__', '\n'.join(pen_paths)))
 open(os.path.join(THEME, 'snippets', 'swag-wordmark.liquid'), 'w').write(snippet)
 
-print('pattern %dx%d, %d bytes' % (pw, ph, len(pattern)))
-print('wordmark %dx%d, %d bytes; %d pen strokes, pen width %s' % (ww, wh, len(wordmark), len(pens), fmt(pen_width)))
+# ---------- brand art: purple field with oversized signature loops ----------
+AW, AH = 1600, 600
+loops = []
+for scale, dx, dy, rot, opacity in [(5.2, -260, -150, -8, 0.22), (4.2, 420, 80, 6, 0.16), (3.4, -80, 250, -4, 0.12)]:
+    loops.append('<g transform="translate(%d %d) rotate(%d %d %d) scale(%s)" opacity="%s">'
+                 '<path d="%s" stroke-width="%s"/></g>'
+                 % (dx, dy, rot, ww / 2, wh / 2, fmt(scale), fmt(opacity), ''.join(strokes), fmt(pen_width)))
+art = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="xMidYMid slice">'
+       '<defs><linearGradient id="field" x1="0" y1="0" x2="1" y2="1">'
+       '<stop offset="0" stop-color="#B4A0CE"/><stop offset=".5" stop-color="#837ABA"/><stop offset="1" stop-color="#4C4AA2"/>'
+       '</linearGradient><radialGradient id="glow" cx=".25" cy=".2" r=".7">'
+       '<stop offset="0" stop-color="#F3EEFB" stop-opacity=".45"/><stop offset="1" stop-color="#F3EEFB" stop-opacity="0"/>'
+       '</radialGradient></defs>'
+       '<rect width="%d" height="%d" fill="url(#field)"/><rect width="%d" height="%d" fill="url(#glow)"/>'
+       '<g fill="none" stroke="#F6F3FC" stroke-linecap="round" stroke-linejoin="round">%s</g></svg>'
+       % (AW, AH, AW, AH, AW, AH, ''.join(loops)))
+open(os.path.join(THEME, 'assets', 'pattern.svg'), 'w').write(art)
+
+print('signature %dx%d: %d strokes, pen width %s' % (ww, wh, len(strokes), fmt(pen_width)))
