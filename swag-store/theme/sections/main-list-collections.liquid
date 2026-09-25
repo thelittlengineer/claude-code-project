@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ 'sections.collection_list.eyebrow' | t }}</p>
+        <p class="eyebrow">{{ 'sections.collection_list.eyebrow' | t }}</p>
         <h1 class="h1">{{ section.settings.title | escape }}</h1>
       </div>
     </div>
@@ -12,7 +12,7 @@
         {%- for collection in collections -%}
           <li>
             <a href="{{ collection.url }}" class="collection-tile">
-              <div class="collection-tile__media ratio ratio--square pattern">
+              <div class="collection-tile__media ratio ratio--square">
                 {%- if collection.featured_image -%}
                   {{
                     collection.featured_image
@@ -29,7 +29,6 @@
                   {%- assign illustration = 'collection-apparel-' | append: illustration -%}
                   {{ illustration | placeholder_svg_tag: 'collection-tile__image placeholder-svg' }}
                 {%- endif -%}
-                <span class="collection-tile__number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
               </div>
               <div class="collection-tile__label">
                 <span class="collection-tile__title">{{ collection.title | escape }}</span>

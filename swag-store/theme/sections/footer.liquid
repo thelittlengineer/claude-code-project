@@ -1,6 +1,6 @@
 {%- assign s = section.settings -%}
 
-<footer class="footer scheme-{{ s.color_scheme }} pattern pattern--subtle">
+<footer class="footer scheme-{{ s.color_scheme }}">
   <div class="page-width">
     {%- if section.blocks.size > 0 -%}
       {%- capture social_icons -%}{% render 'social-icons' %}{%- endcapture -%}

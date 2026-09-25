@@ -4,7 +4,7 @@
       <span class="flip">{% render 'icon', icon: 'arrow' %}</span>
       {{ blog.title | escape }}
     </a>
-    <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ article.published_at | time_tag: format: 'date' }}</p>
+    <p class="eyebrow">{{ article.published_at | time_tag: format: 'date' }}</p>
     <h1 class="h1 page__title">{{ article.title | escape }}</h1>
 
     {%- if article.image -%}

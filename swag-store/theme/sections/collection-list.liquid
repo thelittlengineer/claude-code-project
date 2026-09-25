@@ -29,7 +29,7 @@
         -%}
         <li {{ block.shopify_attributes }}>
           <a href="{{ collection.url | default: routes.collections_url }}" class="collection-tile">
-            <div class="collection-tile__media ratio ratio--square pattern">
+            <div class="collection-tile__media ratio ratio--square">
               {%- if image != blank -%}
                 {{
                   image
@@ -46,7 +46,6 @@
                 {%- assign illustration = 'collection-apparel-' | append: illustration -%}
                 {{ illustration | placeholder_svg_tag: 'collection-tile__image placeholder-svg' }}
               {%- endif -%}
-              <span class="collection-tile__number">{{ forloop.index | prepend: '00' | slice: -3, 3 }}</span>
             </div>
             <div class="collection-tile__label">
               <span class="collection-tile__title">{{ title | escape }}</span>

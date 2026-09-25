@@ -3,7 +3,7 @@
 <section class="section scheme-{{ s.color_scheme }}">
   <div class="page-width">
     <div class="image-with-text image-with-text--{{ s.image_position }}">
-      <div class="image-with-text__media ratio ratio--portrait pattern pattern--bold">
+      <div class="image-with-text__media ratio ratio--portrait">
         {%- if s.image != blank -%}
           {{
             s.image
@@ -22,7 +22,7 @@
 
       <div class="image-with-text__content">
         {%- if s.eyebrow != blank -%}
-          <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ s.eyebrow | escape }}</p>
+          <p class="eyebrow">{{ s.eyebrow | escape }}</p>
         {%- endif -%}
         {%- if s.heading != blank -%}
           <h2 class="h2">{{ s.heading | escape }}</h2>

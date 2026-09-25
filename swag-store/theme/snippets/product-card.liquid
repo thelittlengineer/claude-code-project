@@ -50,7 +50,7 @@
       <span class="tag card__tag">{{ 'products.product.sold_out' | t }}</span>
     {%- elsif product.compare_at_price > product.price -%}
       {%- assign sale_label = 'products.product.on_sale' | t -%}
-      {% render 'blob-badge', text: sale_label, class: 'card__badge' %}
+      {% render 'badge', text: sale_label, class: 'card__badge' %}
     {%- endif -%}
 
     <div class="card__info">

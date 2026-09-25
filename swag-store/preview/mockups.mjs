@@ -43,7 +43,7 @@ const shade = (hex, amount) => {
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 };
 
-function frame(body, { bg = '#cbd68c', shadow = true } = {}) {
+function frame(body, { bg = '#e8e9e2', shadow = true } = {}) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
 <rect width="${W}" height="${H}" fill="${bg}"/>
 ${shadow ? `<ellipse cx="400" cy="905" rx="250" ry="22" fill="#000" opacity=".12"/>` : ''}
@@ -165,19 +165,21 @@ ${signature(sig, { cx: 400, cy: 610, width: 300, color: print, rotate: -6 })}`);
 }
 
 // A flat-lay for the "story" section: tee, cap and stars on a darker ground.
+// The story image: a black tee and a lime cap laid flat on a clean light ground, a pattern swatch peeking in.
 function flatlay(sig) {
-  const teeScaled = `<g transform="translate(90 120) scale(.72) rotate(-8 400 500)">
+  const teeScaled = `<g transform="translate(70 150) scale(.74) rotate(-7 400 500)">
 <path d="${TEE}" fill="#141414"/>
 <path d="${TEE_COLLAR}" fill="none" stroke="#000" stroke-width="18" stroke-linecap="round"/>
 ${signature(sig, { cx: 400, cy: 380, width: 250, color: '#bad406', rotate: -4 })}
 </g>`;
   const capScaled = `<g transform="translate(360 560) scale(.52) rotate(12 400 520)">
-<path d="M150 640C132 470 236 350 392 346C520 344 606 420 624 560C628 590 626 620 618 646C480 676 290 674 150 640Z" fill="#111"/>
-<path d="M420 646C520 640 600 628 632 612C700 620 760 650 752 684C700 716 560 716 470 700C420 692 396 668 420 646Z" fill="#000"/>
-${signature(sig, { cx: 400, cy: 500, width: 250, color: '#bad406', rotate: -3 })}
+<path d="M150 640C132 470 236 350 392 346C520 344 606 420 624 560C628 590 626 620 618 646C480 676 290 674 150 640Z" fill="#bad406"/>
+<path d="M420 646C520 640 600 628 632 612C700 620 760 650 752 684C700 716 560 716 470 700C420 692 396 668 420 646Z" fill="#8fa404"/>
+${signature(sig, { cx: 400, cy: 500, width: 250, color: '#000', rotate: -3 })}
 </g>`;
   return frame(
-    `${patternPanel(sig, { x: 0, y: 0, w: W, h: H, radius: 0 })}
+    `<ellipse cx="370" cy="840" rx="300" ry="26" fill="#000" opacity=".08"/>
+${patternPanel(sig, { x: 560, y: 70, w: 190, h: 250, radius: 14 })}
 ${teeScaled}
 ${capScaled}`,
     { shadow: false }

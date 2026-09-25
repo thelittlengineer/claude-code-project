@@ -6,7 +6,7 @@
 
     {%- form 'contact', id: 'ContactForm', class: 'contact-form' -%}
       {%- if form.posted_successfully? -%}
-        <p class="form-message form-message--success" tabindex="-1" autofocus>{% render 'icon', icon: 'blob' %} {{ 'templates.contact.form.post_success' | t }}</p>
+        <p class="form-message form-message--success" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</p>
       {%- elsif form.errors -%}
         <div class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</div>
       {%- endif -%}

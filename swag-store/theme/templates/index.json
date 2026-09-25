@@ -59,8 +59,8 @@
       "settings": {
         "speed": 36,
         "reverse": false,
-        "tilt": true,
-        "color_scheme": "lime"
+        "tilt": false,
+        "color_scheme": "dark"
       }
     },
     "featured": {
@@ -139,7 +139,7 @@
         "eyebrow": "The list",
         "heading": "Join the crew",
         "text": "<p>First dibs on every drop, restock alerts, and nothing you didn't ask for.</p>",
-        "color_scheme": "lime"
+        "color_scheme": "dark"
       }
     }
   },

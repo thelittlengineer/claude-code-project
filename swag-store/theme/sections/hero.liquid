@@ -28,9 +28,7 @@
       <div class="hero__band">
         {%- if s.eyebrow != blank -%}
           <p class="eyebrow hero__eyebrow">
-            {% render 'icon', icon: 'blob' %}
             {{ s.eyebrow | escape }}
-            {% render 'icon', icon: 'blob' %}
           </p>
         {%- endif -%}
 

@@ -1,7 +1,7 @@
 <section class="section section--tight">
   <div class="page-width">
     <div class="search-page__header">
-      <p class="eyebrow">{% render 'icon', icon: 'blob' %} {{ 'general.search.search' | t }}</p>
+      <p class="eyebrow">{{ 'general.search.search' | t }}</p>
       <h1 class="h1">
         {%- if search.performed -%}
           {{ 'general.search.results_for' | t: terms: search.terms }}

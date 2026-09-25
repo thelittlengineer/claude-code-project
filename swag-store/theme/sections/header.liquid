@@ -11,7 +11,7 @@
           <span class="menu-drawer__open">{% render 'icon', icon: 'menu' %}</span>
           <span class="menu-drawer__close">{% render 'icon', icon: 'close' %}</span>
         </summary>
-        <div class="menu-drawer__panel scheme-{{ scheme }} pattern">
+        <div class="menu-drawer__panel scheme-{{ scheme }}">
           <nav class="menu-drawer__nav" aria-label="{{ 'sections.header.menu' | t }}">
             <ul class="menu-drawer__list" role="list">
               {%- for link in menu.links -%}

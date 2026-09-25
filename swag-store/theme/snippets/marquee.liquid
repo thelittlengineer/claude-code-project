@@ -26,7 +26,7 @@
                 {{ block.settings.text | escape }}
               {%- endif -%}
             </span>
-            <span class="marquee__star">{% render 'icon', icon: 'blob' %}</span>
+            <span class="marquee__dot" aria-hidden="true"></span>
           {%- endfor -%}
         {%- endfor -%}
       </div>

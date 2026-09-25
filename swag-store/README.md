@@ -15,10 +15,10 @@ A Shopify (Online Store 2.0) theme for a clothing brand, designed from the green
 | The lime-and-black loop pattern | Traced from the card into `assets/pattern.svg`: the top of the hero, the newsletter card, the collection banner, the password page, and a faint layer in the footer |
 | Blue-black band, `#00070F` | Page background and the "Dark" color scheme (`Theme settings → Colors`) |
 | Acid lime, `#BAD406` | Buttons, highlights, the announcement ticker, the scrolling strip and the "Lime" color scheme |
-| The rounded "swag" script | Traced into `assets/swag-wordmark.svg`: header logo, hero, footer, sign-offs and empty states. It carries the logo's olive gradient on dark and turns black on lime, and wipes on left to right as it scrolls into view |
-| Card layout: pattern on top, band below | The home page hero is the logo card at page scale |
+| The rounded "swag" script | Traced into `assets/swag-wordmark.svg`: header logo, hero, footer, sign-offs and empty states. It carries the logo's olive gradient on dark and turns black on lime, and glides in left to right, sharpening out of a blur before a soft light sweeps across it |
+| Card layout: pattern on top, band below | The home page hero is the logo card at page scale, with a short pattern strip so the wordmark sits in the first screen |
 
-The pattern also turns up in small ways: blob-shaped **Sale** badges, blob separators in the scrolling text, and a blob on the Add to bag button. Text that sits on the bold pattern goes in a dark panel, like the band on the card.
+Everything else stays quiet: product shots sit on a light neutral backdrop, lime is kept for accents (buttons, the dot before section labels, **Sale** badges, the scrolling strip's separators), and headings are set in sentence case.
 
 Typography pairs the wordmark with bold uppercase **Inter** headings and **Anonymous Pro** mono labels and prices. All three fonts can be changed in the theme editor.
 
