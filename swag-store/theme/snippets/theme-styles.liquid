@@ -1,0 +1,53 @@
+{%- comment -%}
+  Font faces and the theme-setting driven CSS variables. Everything else lives in base.css.
+{%- endcomment -%}
+{%- liquid
+  assign heading_font = settings.type_header_font
+  assign body_font = settings.type_body_font
+  assign accent_font = settings.type_accent_font
+  assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = body_font | font_modify: 'style', 'italic'
+  assign accent_font_bold = accent_font | font_modify: 'weight', 'bold'
+-%}
+
+{% style %}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+  {{ accent_font | font_face: font_display: 'swap' }}
+  {{ accent_font_bold | font_face: font_display: 'swap' }}
+
+  :root {
+    --color-background: {{ settings.color_background }};
+    --color-text: {{ settings.color_text }};
+    --color-accent: {{ settings.color_accent }};
+    --color-black: {{ settings.color_black }};
+    --color-card: {{ settings.color_card }};
+
+    --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --font-heading-style: {{ heading_font.style }};
+    --font-heading-weight: {{ heading_font.weight }};
+    --font-heading-case: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
+
+    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-body-style: {{ body_font.style }};
+    --font-body-weight: {{ body_font.weight }};
+    --font-body-weight-bold: {% if body_font_bold %}{{ body_font_bold.weight }}{% else %}700{% endif %};
+
+    --font-accent-family: {{ accent_font.family }}, {{ accent_font.fallback_families }};
+    --font-accent-weight: {{ accent_font.weight }};
+
+    --page-width: {{ settings.page_width | append: 'px' }};
+    --radius: {{ settings.corner_radius | append: 'px' }};
+    --radius-small: {{ settings.corner_radius | divided_by: 2 | append: 'px' }};
+    --logo-width: {{ settings.logo_width | append: 'px' }};
+  }
+
+  {%- comment -%} Set here, not as a custom property, so the URL resolves the same everywhere. {%- endcomment -%}
+  .pattern::before,
+  .hero__pattern,
+  body.pattern-page--subtle::before {
+    background-image: url({{ 'pattern.svg' | asset_url }});
+  }
+{% endstyle %}

@@ -1,0 +1,35 @@
+{%- comment -%}
+  An endlessly scrolling strip of text separated by little pattern blobs.
+
+  Accepts:
+  - blocks {Array}: blocks with settings.text and optional settings.link
+  - speed {Number}: seconds per loop
+  - size {String}: 'small' or 'large'
+  - reverse {Boolean}: scroll left-to-right
+{%- endcomment -%}
+{%- liquid
+  assign speed = speed | default: 30
+  assign size = size | default: 'small'
+-%}
+<div class="marquee marquee--{{ size }}{% if reverse %} marquee--reverse{% endif %}" style="--marquee-speed: {{ speed }}s;">
+  <div class="marquee__track">
+    {%- for copy in (1..2) -%}
+      <div class="marquee__group"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+        {%- for repeat in (1..4) -%}
+          {%- for block in blocks -%}
+            <span class="marquee__item"{% if copy == 1 and repeat == 1 %} {{ block.shopify_attributes }}{% endif %}>
+              {%- if block.settings.link != blank and copy == 1 and repeat == 1 -%}
+                <a href="{{ block.settings.link }}">{{ block.settings.text | escape }}</a>
+              {%- elsif block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" tabindex="-1">{{ block.settings.text | escape }}</a>
+              {%- else -%}
+                {{ block.settings.text | escape }}
+              {%- endif -%}
+            </span>
+            <span class="marquee__dot" aria-hidden="true"></span>
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<article class="section section--tight">
+  <div class="page-width page-width--narrow">
+    <a href="{{ blog.url }}" class="link-arrow link-arrow--back">
+      <span class="flip">{% render 'icon', icon: 'arrow' %}</span>
+      {{ blog.title | escape }}
+    </a>
+    <p class="eyebrow">{{ article.published_at | time_tag: format: 'date' }}</p>
+    <h1 class="h1 page__title">{{ article.title | escape }}</h1>
+
+    {%- if article.image -%}
+      <div class="article__media">
+        {{
+          article.image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'eager',
+            widths: '750, 1100, 1500, 1800',
+            sizes: '(min-width: 990px) 900px, 100vw',
+            class: 'article__image',
+            alt: article.image.alt
+        }}
+      </div>
+    {%- endif -%}
+
+    <div class="rte page__content">{{ article.content }}</div>
+
+    <div class="signoff">
+      <span class="signoff__label">{{ 'sections.image_with_text.signed' | t }}</span>
+      {% render 'swag-wordmark', id: section.id, class: 'signoff__wordmark', animate: true %}
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Blog post",
+  "class": "section-main-article",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,58 @@
+<section class="section section--tight">
+  <div class="page-width page-width--narrow">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="h3">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- form 'contact', id: 'ContactForm', class: 'contact-form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="form-message form-message--success" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</p>
+      {%- elsif form.errors -%}
+        <div class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</div>
+      {%- endif -%}
+
+      <div class="contact-form__row">
+        <label class="field">
+          <span class="field__label">{{ 'templates.contact.form.name' | t }}</span>
+          <input class="field__input" type="text" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" autocomplete="name">
+        </label>
+        <label class="field">
+          <span class="field__label">{{ 'templates.contact.form.email' | t }} *</span>
+          <input class="field__input" type="email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" autocomplete="email" required>
+        </label>
+      </div>
+      <label class="field">
+        <span class="field__label">{{ 'templates.contact.form.phone' | t }}</span>
+        <input class="field__input" type="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" value="{{ form.phone }}" autocomplete="tel">
+      </label>
+      <label class="field">
+        <span class="field__label">{{ 'templates.contact.form.comment' | t }}</span>
+        <textarea class="field__input field__input--textarea" rows="6" name="contact[{{ 'templates.contact.form.comment' | t }}]">{{ form.body }}</textarea>
+      </label>
+      <button type="submit" class="button">
+        {{ 'templates.contact.form.send' | t }}
+        {% render 'icon', icon: 'arrow' %}
+      </button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "class": "section-contact-form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Drop us a line"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{%- comment -%}
+  Heading row used by grid sections: a mono eyebrow, a big heading and an optional "view all" link.
+
+  Accepts:
+  - eyebrow {String}
+  - heading {String}
+  - link_url {String}
+  - link_label {String}
+{%- endcomment -%}
+{%- if eyebrow != blank or heading != blank or link_url != blank -%}
+  <div class="section-heading">
+    <div>
+      {%- if eyebrow != blank -%}
+        <p class="eyebrow">{{ eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h2 class="h2">{{ heading | escape }}</h2>
+      {%- endif -%}
+    </div>
+    {%- if link_url != blank and link_label != blank -%}
+      <a href="{{ link_url }}" class="link-arrow">
+        {{ link_label | escape }}
+        {% render 'icon', icon: 'arrow' %}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

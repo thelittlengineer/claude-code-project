@@ -1,0 +1,134 @@
+{%- assign s = section.settings -%}
+
+<footer class="footer scheme-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- if section.blocks.size > 0 -%}
+      {%- capture social_icons -%}{% render 'social-icons' %}{%- endcapture -%}
+      <div class="footer__blocks">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'social' and social_icons == blank -%}{%- continue -%}{%- endif -%}
+          <div class="footer__block footer__block--{{ block.type }}" {{ block.shopify_attributes }}>
+            {%- case block.type -%}
+              {%- when 'menu' -%}
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="footer__heading">{{ block.settings.heading | escape }}</h2>
+                {%- endif -%}
+                <ul class="footer__links" role="list">
+                  {%- for link in block.settings.menu.links -%}
+                    <li><a href="{{ link.url }}" class="footer__link"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- when 'text' -%}
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="footer__heading">{{ block.settings.heading | escape }}</h2>
+                {%- endif -%}
+                <div class="rte footer__text">{{ block.settings.text }}</div>
+              {%- when 'social' -%}
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="footer__heading">{{ block.settings.heading | escape }}</h2>
+                {%- endif -%}
+                {{ social_icons }}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if s.show_wordmark -%}
+      <a href="{{ routes.root_url }}" class="footer__wordmark" aria-label="{{ shop.name | escape }}">
+        {% render 'swag-wordmark', id: section.id, animate: true %}
+      </a>
+    {%- endif -%}
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}
+        {%- if s.show_powered_by %} &middot; {{ powered_by_link }}{% endif -%}
+      </p>
+
+      {%- if s.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+        <ul class="footer__payments" role="list">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "section-footer",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_wordmark",
+      "label": "Show giant wordmark",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_powered_by",
+      "label": "Show \"Powered by Shopify\"",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "dark", "label": "Dark" },
+        { "value": "lime", "label": "Lime" }
+      ],
+      "default": "dark"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "About" },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Loud streetwear, made in small runs. Small runs, heavyweight fabrics, no restocks on the limited stuff.</p>"
+        }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Add your links in Theme settings > Social media."
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Follow" }
+      ]
+    }
+  ]
+}
+{% endschema %}

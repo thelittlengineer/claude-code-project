@@ -1,0 +1,8 @@
+{%- comment -%}
+  A small lime pill for sale and status labels.
+
+  Accepts:
+  - text {String}: badge label
+  - class {String}: extra classes
+{%- endcomment -%}
+<span class="badge{% if class != blank %} {{ class }}{% endif %}">{{ text }}</span>

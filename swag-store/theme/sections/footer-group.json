@@ -1,0 +1,46 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "heading": "SWAG",
+            "text": "<p>Loud streetwear, made in small runs. Small runs, heavyweight fabrics, no restocks on the limited stuff.</p>"
+          }
+        },
+        "menu-shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "menu-help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        },
+        "social": {
+          "type": "social",
+          "settings": {
+            "heading": "Follow"
+          }
+        }
+      },
+      "block_order": ["text", "menu-shop", "menu-help", "social"],
+      "settings": {
+        "show_wordmark": true,
+        "show_payment_icons": true,
+        "show_powered_by": false,
+        "color_scheme": "dark"
+      }
+    }
+  },
+  "order": ["footer"]
+}

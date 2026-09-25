@@ -1,0 +1,26 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "logo_width": 140,
+      "color_background": "#00070F",
+      "color_card": "#E8E9E2",
+      "type_header_font": "inter_n7",
+      "heading_uppercase": false,
+      "type_body_font": "inter_n4",
+      "type_accent_font": "anonymous_pro_n4",
+      "page_width": 1360,
+      "corner_radius": 16,
+      "card_image_ratio": "portrait",
+      "card_show_second_image": true,
+      "card_show_vendor": false,
+      "cart_type": "drawer",
+      "show_cart_note": false,
+      "currency_code_enabled": false,
+      "color_text": "#EEF3DA",
+      "color_accent": "#BAD406",
+      "color_black": "#000000",
+      "pattern_page": "none"
+    }
+  }
+}

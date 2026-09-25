@@ -1,0 +1,5 @@
+preview/node_modules/
+preview/build/
+preview/screenshots/
+*.zip
+__pycache__/

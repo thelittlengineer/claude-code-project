@@ -1,0 +1,161 @@
+{
+  "general": {
+    "continue_shopping": "Keep shopping",
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
+    "search": {
+      "search": "Search",
+      "title": "Find your fit",
+      "placeholder": "Search tees, hoodies, caps…",
+      "submit": "Submit search",
+      "results_for": "Results for “{{ terms }}”",
+      "results_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "no_results": "Nothing matched “{{ terms }}”. Try another word."
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "close": "Close",
+    "link_messages": {
+      "new_window": "Opens in a new window."
+    }
+  },
+  "blogs": {
+    "eyebrow": "Journal"
+  },
+  "onboarding": {
+    "product_title": "Example product"
+  },
+  "newsletter": {
+    "label": "Email",
+    "button_label": "Sign up",
+    "success": "You're on the list. Welcome to the crew."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "include_taxes": "Tax included.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "price": {
+        "from_price_html": "From {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price"
+      },
+      "quantity": {
+        "label": "Quantity",
+        "input_label": "Quantity for {{ product }}",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}"
+      }
+    }
+  },
+  "cart": {
+    "title": "Your bag",
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "empty": "Your bag is empty",
+    "continue_shopping": "Keep shopping",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "note": "Order note",
+    "update": "Update",
+    "checkout": "Check out",
+    "view_cart": "View bag",
+    "error": "Something went wrong. Please try again.",
+    "taxes_and_shipping_at_checkout": "Taxes, discounts and shipping calculated at checkout.",
+    "taxes_and_shipping_policy_at_checkout_html": "Taxes, discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
+    "taxes_included_but_shipping_at_checkout": "Tax included. Shipping and discounts calculated at checkout.",
+    "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> and discounts calculated at checkout."
+  },
+  "customer": {
+    "account": {
+      "title": "Account"
+    },
+    "log_in": "Log in"
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "cart": "Bag",
+      "announcement": "Announcements"
+    },
+    "featured_collection": {
+      "view_all": "View all"
+    },
+    "collection_list": {
+      "eyebrow": "Browse",
+      "view_all": "All collections",
+      "placeholder_title": "Collection"
+    },
+    "collection": {
+      "product_count": {
+        "one": "{{ count }} piece",
+        "other": "{{ count }} pieces"
+      },
+      "sort_by": "Sort",
+      "apply": "Apply",
+      "clear_all": "Clear all",
+      "remove_filter": "Remove filter",
+      "from": "From",
+      "to": "To",
+      "empty": "No pieces match these filters."
+    },
+    "image_with_text": {
+      "signed": "Made by"
+    }
+  },
+  "templates": {
+    "404": {
+      "title": "Lost in the pattern",
+      "subtext": "The page you're looking for doesn't exist, or it sold out."
+    },
+    "contact": {
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone number",
+        "comment": "Message",
+        "send": "Send",
+        "post_success": "Thanks for reaching out. We'll get back to you soon."
+      }
+    }
+  },
+  "password": {
+    "notify": "Notify me",
+    "success": "You're on the list. We'll email you when the doors open.",
+    "enter_with_password": "Enter with password",
+    "password": "Password",
+    "enter": "Enter",
+    "admin_link_html": "Are you the store owner? <a href=\"/admin\">Log in here</a>"
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here's your {{ value }} gift card for {{ shop }}!",
+      "subtext": "Your gift card",
+      "expired": "Expired",
+      "expiration_date": "Expires {{ expires_on }}",
+      "how_to_use_gift_card": "Use the gift card code online or the QR code in-store.",
+      "copy_code": "Copy code",
+      "copy_code_success": "Code copied",
+      "shop_link": "Visit online store",
+      "print_gift_card": "Print",
+      "add_to_apple_wallet": "Add to Apple Wallet"
+    }
+  }
+}
