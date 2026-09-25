@@ -82,7 +82,7 @@
             | image_tag: class: 'header__logo-image', alt: shop.name, width: settings.logo_width, loading: 'eager'
           }}
         {%- else -%}
-          {% render 'swag-wordmark', class: 'header__wordmark' %}
+          {% render 'swag-wordmark', id: section.id, class: 'header__wordmark' %}
         {%- endif -%}
       </a>
     {%- if request.page_type == 'index' -%}</h1>{%- else -%}</div>{%- endif -%}

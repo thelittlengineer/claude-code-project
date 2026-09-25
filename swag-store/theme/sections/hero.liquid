@@ -33,7 +33,7 @@
         {%- endif -%}
 
         {%- if s.show_wordmark -%}
-          {% render 'swag-wordmark', class: 'hero__wordmark', animate: s.animate_wordmark %}
+          {% render 'swag-wordmark', id: section.id, class: 'hero__wordmark', animate: s.animate_wordmark %}
         {%- endif -%}
 
         {%- if s.heading != blank -%}

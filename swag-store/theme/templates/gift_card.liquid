@@ -27,7 +27,7 @@
         {%- if settings.logo != blank -%}
           {{ settings.logo | image_url: width: 400 | image_tag: class: 'gift-card__logo', alt: shop.name }}
         {%- else -%}
-          {% render 'swag-wordmark', class: 'gift-card__wordmark' %}
+          {% render 'swag-wordmark', id: 'gift-card', class: 'gift-card__wordmark' %}
         {%- endif -%}
         <p class="gift-card__balance h1">
           {%- if settings.currency_code_enabled -%}

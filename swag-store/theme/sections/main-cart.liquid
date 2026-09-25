@@ -15,7 +15,7 @@
 
     {%- if cart.item_count == 0 -%}
       <div class="empty-state pattern">
-        {% render 'swag-wordmark', class: 'empty-state__wordmark', animate: true %}
+        {% render 'swag-wordmark', id: section.id, class: 'empty-state__wordmark', animate: true %}
         <p class="h3">{{ 'cart.empty' | t }}</p>
         <a href="{{ routes.all_products_collection_url }}" class="button">
           {{ 'cart.continue_shopping' | t }}

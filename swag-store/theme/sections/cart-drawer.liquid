@@ -23,7 +23,7 @@
 
     {%- if cart.item_count == 0 -%}
       <div class="cart-drawer__empty pattern">
-        {% render 'swag-wordmark', class: 'empty-state__wordmark' %}
+        {% render 'swag-wordmark', id: 'cart-drawer', class: 'empty-state__wordmark' %}
         <p class="h3">{{ 'cart.empty' | t }}</p>
         <a href="{{ routes.all_products_collection_url }}" class="button">
           {{ 'cart.continue_shopping' | t }}

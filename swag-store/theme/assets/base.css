@@ -6,10 +6,6 @@
 /* ---------- Tokens ---------- */
 
 :root {
-  /* The wordmark, inlined so it can be used as a mask and filled with the olive gradient or any colour. */
-  --wordmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 380 129'%3E%3Cpath fill-rule='evenodd' d='M299.5 121.0L297.0 121.2L294.4 121.0L289.2 120.1L285.5 118.5L282.2 116.4L279.0 112.9L277.2 109.2L276.4 104.0L276.6 101.0L277.2 99.0L279.0 95.2L282.3 91.8L285.2 89.7L288.8 87.7L298.5 83.8L314.0 79.1L317.0 77.9L317.9 76.8L318.7 74.0L318.8 72.5L318.2 71.8L317.5 71.9L311.8 75.4L305.4 77.8L299.0 78.6L296.8 78.6L291.5 77.8L288.2 76.7L286.3 75.8L281.9 72.5L278.3 68.2L277.2 68.0L276.5 68.4L273.2 71.5L267.5 75.5L261.2 78.0L256.2 78.7L254.0 78.8L248.8 77.8L246.0 76.8L243.8 75.6L241.6 73.8L239.2 71.2L237.0 67.9L236.0 67.5L235.0 68.0L231.5 71.4L228.2 73.7L225.2 75.4L222.1 76.8L217.0 78.1L209.5 78.7L203.0 77.5L200.5 76.5L198.0 75.0L193.9 72.0L192.7 70.5L189.7 66.0L189.0 65.4L187.8 65.3L184.8 66.1L181.8 66.4L179.0 66.3L176.5 65.9L173.8 65.1L170.5 63.6L167.8 61.8L166.5 60.6L165.5 60.2L164.4 61.0L160.9 66.0L156.5 70.4L153.5 73.0L148.2 76.1L143.9 77.8L140.2 78.4L136.5 78.8L133.5 78.5L129.2 77.9L125.7 76.8L122.8 75.0L119.5 72.1L116.8 68.9L115.8 68.6L114.8 69.0L111.5 71.9L107.5 74.6L103.5 76.6L100.0 77.8L92.8 78.7L87.0 78.1L82.8 76.8L79.8 75.1L76.2 71.5L74.0 67.9L73.0 67.2L72.2 67.5L67.0 71.5L63.7 73.5L56.8 76.5L51.0 77.9L40.5 78.8L32.0 77.8L27.5 76.8L23.5 75.5L17.5 72.8L11.4 68.8L8.9 66.2L8.4 65.5L8.3 64.5L8.9 63.2L11.6 59.8L14.0 57.1L15.3 56.2L16.2 56.1L17.0 56.4L23.2 60.6L27.8 61.6L30.8 61.7L33.2 61.2L35.2 60.5L36.2 59.9L39.1 57.2L41.0 53.7L41.4 51.8L41.5 48.5L41.4 46.5L40.7 43.8L39.6 40.8L37.7 37.2L35.2 33.8L34.5 33.1L33.8 33.1L33.0 34.0L29.3 46.0L28.5 47.1L27.8 47.4L26.8 47.4L20.5 45.6L17.8 44.6L16.9 43.5L16.9 42.5L17.2 41.5L25.3 20.8L27.4 12.5L28.8 10.5L30.5 9.8L44.2 9.7L45.8 10.2L46.7 11.2L47.4 13.0L48.0 17.2L49.1 20.0L51.3 24.0L55.5 29.9L58.1 34.5L59.7 38.2L60.6 42.8L60.9 47.8L60.5 52.8L58.9 58.5L58.9 59.5L59.5 59.9L60.5 59.7L62.2 58.8L66.2 55.8L69.3 52.0L71.9 48.0L73.3 45.2L74.8 40.5L79.0 13.8L80.1 11.2L81.5 10.2L83.2 9.7L95.8 9.8L97.0 10.0L97.8 10.3L98.4 11.0L98.9 12.0L99.0 14.8L94.5 43.2L93.3 53.5L93.9 57.5L95.0 59.9L96.5 61.1L99.0 61.5L101.0 61.3L103.0 60.6L105.0 59.2L106.5 57.8L109.4 53.8L110.8 51.2L112.7 47.0L114.5 40.8L118.0 16.8L118.7 13.0L119.5 11.2L120.8 10.2L122.8 9.8L133.8 9.7L136.2 9.9L137.2 10.2L138.0 10.8L138.5 11.5L138.8 12.5L138.7 13.8L134.0 43.5L133.5 48.8L133.4 52.8L134.0 56.8L135.5 59.9L136.2 60.7L137.2 61.2L139.5 61.6L141.5 61.4L143.5 60.9L145.5 59.8L147.0 58.6L151.4 53.8L154.4 47.8L154.9 46.2L155.0 44.5L153.8 39.5L152.8 32.2L152.8 25.5L153.1 23.0L154.2 18.8L156.0 14.8L157.3 13.0L158.5 11.9L160.2 10.8L161.8 10.2L164.0 9.8L165.8 9.9L167.5 10.2L169.2 10.9L170.8 11.8L171.9 12.8L174.2 16.2L175.6 21.2L175.9 26.8L175.6 30.8L174.8 35.5L173.4 41.5L173.5 43.8L174.6 47.0L176.5 49.2L178.6 50.8L181.5 51.5L183.0 51.3L185.0 50.6L185.8 50.1L186.2 49.4L186.6 48.2L187.4 42.0L188.6 37.5L190.9 31.5L192.4 28.5L194.5 25.2L198.2 20.3L202.2 16.5L205.8 13.9L210.5 11.2L213.5 9.8L218.8 8.4L225.2 7.7L230.2 8.4L233.2 9.2L236.2 10.4L241.0 13.1L241.8 12.7L243.3 10.8L244.5 10.1L245.8 9.8L258.2 9.7L260.2 10.2L261.0 10.8L261.6 11.5L261.8 13.8L257.3 42.8L256.2 50.5L256.0 54.5L256.2 57.5L257.0 59.5L258.5 61.1L260.2 61.6L262.0 61.3L264.2 60.3L267.2 57.7L268.8 55.8L271.2 52.2L273.6 47.5L274.9 41.0L276.8 35.0L278.6 30.8L281.2 25.7L284.5 21.2L286.0 19.6L289.2 16.4L293.8 13.0L298.8 10.5L303.8 8.8L310.2 7.8L313.0 7.9L317.8 8.6L322.2 10.2L326.5 12.6L327.5 13.0L328.3 12.8L330.2 10.6L332.0 9.9L334.5 9.7L344.2 9.7L346.5 10.1L347.5 10.8L348.1 11.8L348.2 14.8L340.7 62.5L340.4 65.0L340.6 65.8L341.0 66.1L341.8 65.9L345.9 62.8L351.6 56.2L353.9 52.8L359.3 41.5L360.2 40.2L361.0 39.8L362.0 39.6L363.2 39.7L369.0 41.4L370.4 42.0L371.2 43.0L371.6 44.2L371.4 45.8L369.0 52.8L366.0 58.8L361.9 65.0L356.2 71.2L352.8 74.4L347.8 78.2L343.2 81.0L338.5 83.4L336.7 84.8L335.9 86.2L333.0 94.0L329.9 100.2L325.1 107.0L321.8 110.5L319.2 112.9L313.0 117.3L310.8 118.3L306.0 119.9L302.2 120.7L299.5 121.0ZM218.6 61.5L221.0 61.0L222.8 60.4L225.5 58.8L227.9 56.8L231.6 52.0L235.0 45.6L238.1 36.0L238.8 31.0L238.5 29.8L237.8 28.8L233.8 26.4L229.8 25.5L226.5 25.3L223.5 26.1L220.0 27.6L217.5 29.3L214.2 32.5L212.2 35.4L210.4 39.0L209.0 43.2L208.2 47.5L208.4 51.8L209.1 54.8L210.7 58.0L212.8 60.1L215.8 61.5L218.6 61.5ZM305.4 61.5L309.8 60.3L311.6 59.2L313.8 57.3L317.5 53.0L322.1 44.2L324.6 36.5L325.4 32.8L325.4 31.0L324.9 29.5L324.0 28.5L319.2 26.1L315.5 25.3L312.0 25.5L309.5 26.1L305.8 27.8L303.8 29.2L300.7 32.2L298.4 35.8L297.0 38.5L295.7 42.8L295.0 46.2L294.9 51.5L295.5 54.5L297.2 58.0L299.2 60.0L300.5 60.8L302.2 61.4L305.4 61.5ZM300.3 104.2L302.5 103.8L305.0 102.6L308.0 100.3L311.0 96.8L311.8 94.8L311.6 93.8L311.2 93.5L310.5 93.5L302.0 96.7L299.2 98.2L297.2 99.7L296.2 101.2L296.2 102.2L296.5 103.0L297.2 103.8L298.0 104.1L300.3 104.2Z'/%3E%3C/svg%3E");
-  --wordmark-ratio: 380 / 129;
-  --wordmark-gradient: linear-gradient(90deg, #b3c95a 0%, #8fa24a 48%, #4e5b1e 100%);
 
   --gutter: clamp(16px, 3vw, 32px);
   --gap: clamp(12px, 1.6vw, 22px);
@@ -29,7 +25,9 @@
   --line: color-mix(in srgb, var(--color-text) 18%, transparent);
   --btn-bg: var(--color-accent);
   --btn-fg: var(--color-black);
-  --wordmark-fill: var(--wordmark-gradient);
+  --wordmark-start: #b3c95a;
+  --wordmark-middle: #8fa24a;
+  --wordmark-end: #4e5b1e;
 }
 
 .scheme-lime {
@@ -42,7 +40,9 @@
   --line: color-mix(in srgb, var(--color-black) 24%, transparent);
   --btn-bg: var(--color-black);
   --btn-fg: var(--color-accent);
-  --wordmark-fill: var(--color-black);
+  --wordmark-start: var(--color-black);
+  --wordmark-middle: var(--color-black);
+  --wordmark-end: var(--color-black);
 }
 
 .scheme-dark,
@@ -377,87 +377,79 @@ h4,
 
 /* ---------- Wordmark ---------- */
 
-@property --reveal {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 140%;
+.wordmark {
+  --write-duration: 2.4s;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.wordmark__stop--start {
+  stop-color: var(--wordmark-start);
+}
+
+.wordmark__stop--middle {
+  stop-color: var(--wordmark-middle);
+}
+
+.wordmark__stop--end {
+  stop-color: var(--wordmark-end);
 }
 
 /*
- * The mark keeps the logo's look: letters masked from the traced shape, filled with the olive gradient.
- * Two extra layers make the entrance: a feathered mask edge that sweeps across (--reveal), and a
- * light sheen parked off to the right that glides over the letters once they have landed.
+ * Handwriting: a masked copy of the letters is drawn in by pen strokes that run down the centre of
+ * each letter, one after another (--d is when a stroke starts, --t how long it takes). The full
+ * letters then fade in underneath to fill the tips and blobs the pen skipped.
  */
-.wordmark {
-  --reveal: 140%;
-  --sheen: linear-gradient(105deg, transparent 41%, rgb(246 255 196 / 0.35) 46%, rgb(250 255 220 / 0.95) 50%, rgb(246 255 196 / 0.35) 54%, transparent 59%);
-  display: block;
-  width: 100%;
-  aspect-ratio: var(--wordmark-ratio);
-  background-image: var(--sheen), var(--wordmark-fill);
-  background-size: 300% 100%, 100% 100%;
-  background-position: 0% 0, 0 0;
-  background-repeat: no-repeat;
-  -webkit-mask:
-    var(--wordmark) center / contain no-repeat,
-    linear-gradient(100deg, #000 calc(var(--reveal) - 30%), transparent var(--reveal)) 0 0 / 100% 100% no-repeat;
-  -webkit-mask-composite: source-in;
-  mask:
-    var(--wordmark) center / contain no-repeat,
-    linear-gradient(100deg, #000 calc(var(--reveal) - 30%), transparent var(--reveal)) 0 0 / 100% 100% no-repeat;
-  mask-composite: intersect;
-}
-
-.js .wordmark--animate {
-  --reveal: 0%;
+.js .wordmark--animate .wordmark__letters {
   opacity: 0;
-  filter: blur(12px);
-  transform: translateY(18px) scale(0.97);
 }
 
-.js .wordmark--animate.is-signed {
-  animation:
-    wordmark-reveal 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards,
-    wordmark-settle 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards,
-    wordmark-sheen 1.4s cubic-bezier(0.45, 0, 0.2, 1) 1.5s forwards;
+.js .wordmark--animate .wordmark__pen {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+  opacity: 0;
 }
 
-.header__logo:hover .wordmark {
-  animation: wordmark-sheen 0.9s ease-in-out;
+.js .wordmark--animate.is-signed .wordmark__pen {
+  animation: pen-write calc(var(--t) * var(--write-duration)) cubic-bezier(0.45, 0.05, 0.4, 1)
+    calc(var(--d) * var(--write-duration) + 0.2s) both;
 }
 
-@keyframes wordmark-reveal {
-  to {
-    --reveal: 140%;
+.js .wordmark--animate.is-signed .wordmark__letters {
+  animation: ink-settle 0.5s ease calc(var(--write-duration) + 0.1s) forwards;
+}
+
+@keyframes pen-write {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 
-@keyframes wordmark-settle {
+@keyframes ink-settle {
   to {
     opacity: 1;
-    filter: blur(0);
-    transform: none;
-  }
-}
-
-@keyframes wordmark-sheen {
-  from {
-    background-position: 0% 0, 0 0;
-  }
-  to {
-    background-position: 100% 0, 0 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .wordmark--animate,
-  .js .wordmark--animate.is-signed,
-  .header__logo:hover .wordmark {
-    --reveal: 140%;
-    opacity: 1;
-    filter: none;
-    transform: none;
+  .js .wordmark--animate .wordmark__letters,
+  .js .wordmark--animate .wordmark__pen,
+  .js .wordmark--animate.is-signed .wordmark__letters,
+  .js .wordmark--animate.is-signed .wordmark__pen {
     animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 

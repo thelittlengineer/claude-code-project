@@ -12,10 +12,10 @@ A Shopify (Online Store 2.0) theme for a clothing brand, designed from the green
 
 | Logo detail | Where it shows up in the theme |
 | --- | --- |
-| The lime-and-black loop pattern | Traced from the card into `assets/pattern.svg`: the top of the hero, the newsletter card, the collection banner, the password page, and a faint layer in the footer |
+| The lime-and-black loop pattern | Traced from the card into smooth curves in `assets/pattern.svg`, so it stays sharp even on 4K screens: the top of the hero, the newsletter card, the collection banner, the password page, and a faint layer in the footer |
 | Blue-black band, `#00070F` | Page background and the "Dark" color scheme (`Theme settings → Colors`) |
 | Acid lime, `#BAD406` | Buttons, highlights, the announcement ticker, the scrolling strip and the "Lime" color scheme |
-| The rounded "swag" script | Traced into `assets/swag-wordmark.svg`: header logo, hero, footer, sign-offs and empty states. It carries the logo's olive gradient on dark and turns black on lime, and glides in left to right, sharpening out of a blur before a soft light sweeps across it |
+| The rounded "swag" script | Traced into `assets/swag-wordmark.svg`: header logo, hero, footer, sign-offs and empty states. It carries the logo's olive gradient on dark and turns black on lime, and writes itself on letter by letter, like handwriting, as it scrolls into view |
 | Card layout: pattern on top, band below | The home page hero is the logo card at page scale, with a short pattern strip so the wordmark sits in the first screen |
 
 Everything else stays quiet: product shots sit on a light neutral backdrop, lime is kept for accents (buttons, the dot before section labels, **Sale** badges, the scrolling strip's separators), and headings are set in sentence case.
@@ -74,7 +74,7 @@ The renderer (`render.mjs`) covers only the parts of Shopify Liquid this theme u
 
 ## Brand assets
 
-`tools/build_brand_assets.py` rebuilds the wordmark and pattern from `reference/swag-logo-green.png`, the green logo card cropped from the original image. It traces the letters and the pattern into SVG and inlines the wordmark into `base.css` as a mask, so it can take the olive gradient or any colour.
+`tools/build_brand_assets.py` rebuilds the pattern and the wordmark from `reference/swag-logo-green.png`, the green logo card cropped from the original image. It traces both into cubic Bézier curves (so they stay crisp at any size), and writes `snippets/swag-wordmark.liquid`: the letters as inline SVG plus pen strokes along the centre of each letter, which draw the word on stroke by stroke.
 
 ```sh
 pip install pillow numpy scipy scikit-image

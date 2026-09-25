@@ -30,7 +30,7 @@
       {%- paginate search.results by 24 -%}
         {%- if search.results_count == 0 -%}
           <div class="empty-state">
-            {% render 'swag-wordmark', class: 'empty-state__wordmark' %}
+            {% render 'swag-wordmark', id: section.id, class: 'empty-state__wordmark' %}
             <p class="h3">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
           </div>
         {%- else -%}

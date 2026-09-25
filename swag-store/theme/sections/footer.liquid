@@ -36,7 +36,7 @@
 
     {%- if s.show_wordmark -%}
       <a href="{{ routes.root_url }}" class="footer__wordmark" aria-label="{{ shop.name | escape }}">
-        {% render 'swag-wordmark', animate: true %}
+        {% render 'swag-wordmark', id: section.id, animate: true %}
       </a>
     {%- endif -%}
 

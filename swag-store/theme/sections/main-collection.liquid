@@ -145,7 +145,7 @@
 
       {%- if collection.products.size == 0 -%}
         <div class="empty-state">
-          {% render 'swag-wordmark', class: 'empty-state__wordmark' %}
+          {% render 'swag-wordmark', id: section.id, class: 'empty-state__wordmark' %}
           <p class="h3">{{ 'sections.collection.empty' | t }}</p>
           <a href="{{ collection.url }}" class="button button--outline">{{ 'sections.collection.clear_all' | t }}</a>
         </div>
