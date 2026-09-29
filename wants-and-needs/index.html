@@ -7,7 +7,7 @@
 <meta name="description" content="Heavyweight streetwear essentials, released in numbered drops. Worldwide shipping.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Mrs+Saint+Delafield&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
 </head>
@@ -20,17 +20,21 @@
       <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
       <stop offset=".45" stop-color="#fff" stop-opacity="0"/>
       <stop offset=".6" stop-color="#000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".22"/>
     </linearGradient>
     <linearGradient id="wn-shade-v" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0" stop-color="#fff" stop-opacity=".06"/>
-      <stop offset="1" stop-color="#000" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".16"/>
     </linearGradient>
+    <radialGradient id="wn-fade" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
     <pattern id="wn-twill" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
       <line x1="0" y1="0" x2="0" y2="4" stroke="#fff" stroke-opacity=".08" stroke-width="1.4"/>
     </pattern>
     <pattern id="wn-rib" width="3" height="10" patternUnits="userSpaceOnUse">
-      <line x1="1" y1="0" x2="1" y2="10" stroke="#000" stroke-opacity=".22" stroke-width="1"/>
+      <line x1="1" y1="0" x2="1" y2="10" stroke="#000" stroke-opacity=".2" stroke-width="1"/>
     </pattern>
   </defs>
 </svg>
@@ -44,7 +48,10 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#top" class="wordmark" aria-label="Wants and Needs — home">Wants <i>and</i> Needs</a>
+    <a href="#top" class="brand" aria-label="Wants and Needs — home">
+      <span class="badge" aria-hidden="true"><span class="badge-w">W</span><span class="badge-sig">Wants&amp;Needs</span></span>
+      <span class="brand-sig" aria-hidden="true">Wants&amp;Needs</span>
+    </a>
     <nav class="nav" aria-label="Main">
       <ul class="nav-links">
         <li><a href="#shop">Shop</a></li>
@@ -71,8 +78,9 @@
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="eyebrow">Heavyweight essentials · Numbered drops</p>
-        <h1 class="hero-title">Take<br>Action.</h1>
-        <p class="hero-sub">Baggy fits in 400 GSM cotton, built in the colors you'll actually wear.
+        <p class="hero-sig" aria-hidden="true">Wants&amp;Needs</p>
+        <h1 class="hero-title">Take Action.</h1>
+        <p class="hero-sub">Baggy fits, heavyweight cotton and a signature on every piece.
           Released in limited drops. Shipped worldwide.</p>
         <div class="hero-actions">
           <a href="#shop" class="btn btn-light">Shop the drop</a>
@@ -89,14 +97,12 @@
         </div>
       </div>
 
-      <div class="hero-stage">
-        <div class="stage-tag stage-tag--tl">The Sweatsuit</div>
-        <div class="stage-tag stage-tag--br">400 GSM</div>
+      <div class="hero-stage swirl">
+        <div class="stage-tag stage-tag--tl" data-look-name>Tee &amp; Jorts</div>
         <div class="outfit" data-outfit></div>
-        <div class="stage-swatches" role="group" aria-label="Sweatsuit color">
-          <button type="button" class="swatch is-active" style="--sw:#1b1b1c" data-hero-color="#1b1b1c" aria-label="Black"></button>
-          <button type="button" class="swatch" style="--sw:#1f2b45" data-hero-color="#1f2b45" aria-label="Navy"></button>
-          <span class="stage-swatch-name" data-hero-color-name>Black</span>
+        <div class="stage-looks" role="group" aria-label="Choose a look">
+          <button type="button" class="look-btn is-active" data-look="0">Look 01</button>
+          <button type="button" class="look-btn" data-look="1">Look 02</button>
         </div>
       </div>
     </div>
@@ -107,16 +113,10 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <p class="eyebrow eyebrow--dark">Shop</p>
+          <p class="eyebrow">Shop</p>
           <h2 class="section-title">The Essentials</h2>
         </div>
-        <div class="filters" role="group" aria-label="Filter by color">
-          <button type="button" class="chip is-active" data-filter="all">All</button>
-          <button type="button" class="chip" data-filter="Black"><i style="--sw:#1b1b1c"></i>Black</button>
-          <button type="button" class="chip" data-filter="Navy"><i style="--sw:#1f2b45"></i>Navy</button>
-          <button type="button" class="chip" data-filter="Brown"><i style="--sw:#5b3f2c"></i>Brown</button>
-          <button type="button" class="chip" data-filter="Dark Blue"><i style="--sw:#2b3f5c"></i>Dark Blue</button>
-        </div>
+        <div class="filters" role="group" aria-label="Filter by color" data-filters></div>
       </div>
       <div class="product-grid" data-products></div>
     </div>
@@ -127,23 +127,26 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <p class="eyebrow eyebrow--dark">The palette</p>
-          <h2 class="section-title">Four colors. No noise.</h2>
+          <p class="eyebrow">The palette</p>
+          <h2 class="section-title">Five colors. No noise.</h2>
         </div>
         <p class="section-sub">Every piece is made to match every other piece. Mix it, stack it, wear it as a set.</p>
       </div>
       <div class="palette-grid">
-        <a href="#shop" class="tone reveal" style="--tone:#1b1b1c" data-shop-color="Black">
-          <span class="tone-name">Black</span><span class="tone-hex">#1B1B1C</span><span class="tone-cta">Shop black →</span>
+        <a href="#shop" class="tone reveal" style="--tone:#161617" data-shop-color="Black">
+          <span class="tone-name">Black</span><span class="tone-hex">#161617</span><span class="tone-cta">Shop black →</span>
+        </a>
+        <a href="#shop" class="tone tone--light reveal" style="--tone:#efebe3" data-shop-color="Cream">
+          <span class="tone-name">Cream</span><span class="tone-hex">#EFEBE3</span><span class="tone-cta">Shop cream →</span>
+        </a>
+        <a href="#shop" class="tone reveal" style="--tone:#8db7d9" data-shop-color="Sky Blue">
+          <span class="tone-name">Sky Blue</span><span class="tone-hex">#8DB7D9</span><span class="tone-cta">Shop sky →</span>
         </a>
         <a href="#shop" class="tone reveal" style="--tone:#1f2b45" data-shop-color="Navy">
           <span class="tone-name">Navy</span><span class="tone-hex">#1F2B45</span><span class="tone-cta">Shop navy →</span>
         </a>
         <a href="#shop" class="tone reveal" style="--tone:#5b3f2c" data-shop-color="Brown">
           <span class="tone-name">Brown</span><span class="tone-hex">#5B3F2C</span><span class="tone-cta">Shop brown →</span>
-        </a>
-        <a href="#shop" class="tone reveal" style="--tone:#2b3f5c" data-shop-color="Dark Blue">
-          <span class="tone-name">Dark Blue</span><span class="tone-hex">#2B3F5C</span><span class="tone-cta">Shop denim →</span>
         </a>
       </div>
     </div>
@@ -174,7 +177,7 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <p class="eyebrow eyebrow--dark">How drops work</p>
+          <p class="eyebrow">How drops work</p>
           <h2 class="section-title">Limited. Numbered. Gone.</h2>
         </div>
       </div>
@@ -188,10 +191,10 @@
   </section>
 
   <!-- WAITLIST -->
-  <section id="waitlist" class="waitlist">
+  <section id="waitlist" class="waitlist swirl">
     <div class="container waitlist-inner">
-      <p class="eyebrow">Waitlist</p>
-      <h2 class="waitlist-title">Don't miss<br>the next drop.</h2>
+      <span class="badge badge--lg" aria-hidden="true"><span class="badge-w">W</span><span class="badge-sig">Wants&amp;Needs</span></span>
+      <h2 class="waitlist-title">Don't miss the next drop.</h2>
       <form class="waitlist-form" data-waitlist>
         <label class="sr-only" for="wl-email">Email address</label>
         <input id="wl-email" type="email" name="email" placeholder="Your email" required autocomplete="email">
@@ -205,7 +208,10 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <a href="#top" class="wordmark wordmark--footer">Wants <i>and</i> Needs</a>
+    <a href="#top" class="brand brand--footer" aria-label="Wants and Needs — home">
+      <span class="badge" aria-hidden="true"><span class="badge-w">W</span><span class="badge-sig">Wants&amp;Needs</span></span>
+      <span class="brand-sig" aria-hidden="true">Wants&amp;Needs</span>
+    </a>
     <ul class="footer-links">
       <li><a href="#shop">Shop</a></li>
       <li><a href="#drops">Drops</a></li>
@@ -228,7 +234,7 @@
   <div class="bag-items" data-bag-items></div>
   <div class="bag-foot">
     <div class="bag-total"><span>Subtotal</span><span data-bag-subtotal>$0.00</span></div>
-    <button type="button" class="btn btn-dark btn-block" data-checkout>Checkout</button>
+    <button type="button" class="btn btn-light btn-block" data-checkout>Checkout</button>
     <p class="bag-note">Shipping calculated at checkout. Ships worldwide.</p>
   </div>
 </aside>
