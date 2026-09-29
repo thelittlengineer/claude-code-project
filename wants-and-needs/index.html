@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wants and Needs — Take Action</title>
+<meta name="description" content="Heavyweight streetwear essentials, released in numbered drops. Worldwide shipping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- Shared SVG defs used by every garment illustration -->
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="wn-shade" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".10"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".24"/>
+    </linearGradient>
+    <linearGradient id="wn-shade-v" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".18"/>
+    </linearGradient>
+    <pattern id="wn-twill" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#fff" stroke-opacity=".08" stroke-width="1.4"/>
+    </pattern>
+    <pattern id="wn-rib" width="3" height="10" patternUnits="userSpaceOnUse">
+      <line x1="1" y1="0" x2="1" y2="10" stroke="#000" stroke-opacity=".22" stroke-width="1"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="announce" aria-label="Announcements">
+  <div class="announce-track">
+    <span>Take action</span><span>Worldwide shipping</span><span>400 GSM heavyweight cotton</span><span>Numbered drops — once it's gone, it's gone</span><span>Join the waitlist</span>
+    <span aria-hidden="true">Take action</span><span aria-hidden="true">Worldwide shipping</span><span aria-hidden="true">400 GSM heavyweight cotton</span><span aria-hidden="true">Numbered drops — once it's gone, it's gone</span><span aria-hidden="true">Join the waitlist</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="wordmark" aria-label="Wants and Needs — home">Wants <i>and</i> Needs</a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#palette">Colors</a></li>
+        <li><a href="#drops">Drops</a></li>
+        <li><a href="#waitlist">Waitlist</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="bag-btn" type="button" aria-label="Open bag" data-open-bag>
+        Bag <span class="bag-count" data-bag-count>0</span>
+      </button>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Heavyweight essentials · Numbered drops</p>
+        <h1 class="hero-title">Take<br>Action.</h1>
+        <p class="hero-sub">Baggy fits in 400 GSM cotton, built in the colors you'll actually wear.
+          Released in limited drops. Shipped worldwide.</p>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-light">Shop the drop</a>
+          <a href="#waitlist" class="btn btn-outline-light">Join the waitlist</a>
+        </div>
+        <div class="countdown" data-countdown>
+          <p class="countdown-label">Next drop in</p>
+          <div class="countdown-grid">
+            <div><span data-cd="d">00</span><small>Days</small></div>
+            <div><span data-cd="h">00</span><small>Hrs</small></div>
+            <div><span data-cd="m">00</span><small>Min</small></div>
+            <div><span data-cd="s">00</span><small>Sec</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stage">
+        <div class="stage-tag stage-tag--tl">The Sweatsuit</div>
+        <div class="stage-tag stage-tag--br">400 GSM</div>
+        <div class="outfit" data-outfit></div>
+        <div class="stage-swatches" role="group" aria-label="Sweatsuit color">
+          <button type="button" class="swatch is-active" style="--sw:#1b1b1c" data-hero-color="#1b1b1c" aria-label="Black"></button>
+          <button type="button" class="swatch" style="--sw:#1f2b45" data-hero-color="#1f2b45" aria-label="Navy"></button>
+          <span class="stage-swatch-name" data-hero-color-name>Black</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="shop">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow eyebrow--dark">Shop</p>
+          <h2 class="section-title">The Essentials</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter by color">
+          <button type="button" class="chip is-active" data-filter="all">All</button>
+          <button type="button" class="chip" data-filter="Black"><i style="--sw:#1b1b1c"></i>Black</button>
+          <button type="button" class="chip" data-filter="Navy"><i style="--sw:#1f2b45"></i>Navy</button>
+          <button type="button" class="chip" data-filter="Brown"><i style="--sw:#5b3f2c"></i>Brown</button>
+          <button type="button" class="chip" data-filter="Dark Blue"><i style="--sw:#2b3f5c"></i>Dark Blue</button>
+        </div>
+      </div>
+      <div class="product-grid" data-products></div>
+    </div>
+  </section>
+
+  <!-- PALETTE -->
+  <section id="palette" class="palette">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow eyebrow--dark">The palette</p>
+          <h2 class="section-title">Four colors. No noise.</h2>
+        </div>
+        <p class="section-sub">Every piece is made to match every other piece. Mix it, stack it, wear it as a set.</p>
+      </div>
+      <div class="palette-grid">
+        <a href="#shop" class="tone reveal" style="--tone:#1b1b1c" data-shop-color="Black">
+          <span class="tone-name">Black</span><span class="tone-hex">#1B1B1C</span><span class="tone-cta">Shop black →</span>
+        </a>
+        <a href="#shop" class="tone reveal" style="--tone:#1f2b45" data-shop-color="Navy">
+          <span class="tone-name">Navy</span><span class="tone-hex">#1F2B45</span><span class="tone-cta">Shop navy →</span>
+        </a>
+        <a href="#shop" class="tone reveal" style="--tone:#5b3f2c" data-shop-color="Brown">
+          <span class="tone-name">Brown</span><span class="tone-hex">#5B3F2C</span><span class="tone-cta">Shop brown →</span>
+        </a>
+        <a href="#shop" class="tone reveal" style="--tone:#2b3f5c" data-shop-color="Dark Blue">
+          <span class="tone-name">Dark Blue</span><span class="tone-hex">#2B3F5C</span><span class="tone-cta">Shop denim →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WANTS / NEEDS -->
+  <section class="split">
+    <div class="split-half split-wants reveal">
+      <h2 class="split-word">Wants</h2>
+      <ul class="split-list">
+        <li><span>01</span>The baggy fit that sits right</li>
+        <li><span>02</span>Colors that go with everything</li>
+        <li><span>03</span>Something not everyone has</li>
+      </ul>
+    </div>
+    <div class="split-half split-needs reveal">
+      <h2 class="split-word">Needs</h2>
+      <ul class="split-list">
+        <li><span>01</span>400 GSM heavyweight cotton</li>
+        <li><span>02</span>Shipping to wherever you are</li>
+        <li><span>03</span>Built to last past the hype</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DROPS -->
+  <section id="drops" class="drops">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow eyebrow--dark">How drops work</p>
+          <h2 class="section-title">Limited. Numbered. Gone.</h2>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><span class="step-num">01</span><h3>Join the waitlist</h3><p>Get on the list before anything goes public.</p></li>
+        <li class="step reveal"><span class="step-num">02</span><h3>Get the heads-up</h3><p>Waitlist hears the date and time first.</p></li>
+        <li class="step reveal"><span class="step-num">03</span><h3>Drop goes live</h3><p>Everything releases at once, at the set time.</p></li>
+        <li class="step reveal"><span class="step-num">04</span><h3>Sold out means sold out</h3><p>When it's gone, wait for the next number.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section id="waitlist" class="waitlist">
+    <div class="container waitlist-inner">
+      <p class="eyebrow">Waitlist</p>
+      <h2 class="waitlist-title">Don't miss<br>the next drop.</h2>
+      <form class="waitlist-form" data-waitlist>
+        <label class="sr-only" for="wl-email">Email address</label>
+        <input id="wl-email" type="email" name="email" placeholder="Your email" required autocomplete="email">
+        <button type="submit" class="btn btn-light">Take action</button>
+      </form>
+      <p class="waitlist-note" data-waitlist-note role="status">No spam. Just drop dates.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="#top" class="wordmark wordmark--footer">Wants <i>and</i> Needs</a>
+    <ul class="footer-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#drops">Drops</a></li>
+      <li><a href="#waitlist">Waitlist</a></li>
+      <li><a href="https://www.instagram.com/wantsandneedsbrand_/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@wantsandneedsbrand" target="_blank" rel="noopener">TikTok</a></li>
+    </ul>
+    <p class="footer-note">Worldwide shipping · Take action.</p>
+    <p class="footer-concept">Concept site designed by Mawqi. Not affiliated with or endorsed by Wants and Needs.</p>
+  </div>
+</footer>
+
+<!-- BAG DRAWER -->
+<div class="bag-overlay" data-bag-overlay hidden></div>
+<aside class="bag" data-bag aria-label="Shopping bag" aria-hidden="true">
+  <div class="bag-head">
+    <h2>Your bag</h2>
+    <button type="button" class="bag-close" data-close-bag aria-label="Close bag">×</button>
+  </div>
+  <div class="bag-items" data-bag-items></div>
+  <div class="bag-foot">
+    <div class="bag-total"><span>Subtotal</span><span data-bag-subtotal>$0.00</span></div>
+    <button type="button" class="btn btn-dark btn-block" data-checkout>Checkout</button>
+    <p class="bag-note">Shipping calculated at checkout. Ships worldwide.</p>
+  </div>
+</aside>
+
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+</body>
+</html>
